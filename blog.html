@@ -346,28 +346,28 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#blog_1---hellow-world">Blog_1 - Hellow World</a><ul>
+<li><a href="#blog_1---hello-world">Blog_1 - Hello World</a><ul>
 <li><a href="#formualting-the-question">Formualting the Question</a></li>
 <li><a href="#importing-and-cleaning-the-data">Importing and cleaning the data</a></li>
 <li><a href="#transofrm-and-explore-the-data">Transofrm and Explore the data</a></li>
 <li><a href="#lets-us-visualize-the-answers-to-the-question">Lets us visualize the answers to the question</a><ul>
-<li><a href="#a.-base-plot---what-does-the-relationship-betwee-wieght-and-mpg-look-like">A. Base plot - what does the relationship betwee wieght and mpg look like</a></li>
-<li><a href="#b.-answer-the-questoin--which-cars-have-maximum-and-minimum-mpg-from-all-the-cars-in-the-log">B. Answer the questoin -Which cars have maximum and minimum mpg from all the cars in the log</a></li>
-<li><a href="#c.-answer-the-question---what-is-the-average-mpg-for-each-cylinder-group-4-6-8">C. Answer the question - what is the average mpg for each cylinder group (4, 6, 8)</a></li>
-<li><a href="#d.-answer-the-question---what-are-the-top-5-mpg-cars-for-each-cylinder-group">D. Answer the question - What are the top 5% mpg cars for each cylinder group</a></li>
+<li><a href="#a.-base-plot---shows-the-impact-of-weight-on-mpg">A. Base plot - shows the impact of weight on mpg</a></li>
+<li><a href="#b.-answers-the-question---which-cars-have-maximum-and-minimum-mpg-from-all-the-cars-in-the-lot">B. Answers the question - Which cars have maximum and minimum mpg from all the cars in the lot</a></li>
+<li><a href="#c.-answers-the-question---what-is-the-average-mpg-for-each-cylinder-group-4-6-8">C. Answers the question - what is the average mpg for each cylinder group (4, 6, 8)</a></li>
+<li><a href="#d.-answers-the-question---what-are-the-top-5-mpg-cars-for-each-cylinder-group">D. Answers the question - What are the top 5% mpg cars for each cylinder group</a></li>
 </ul></li>
-<li><a href="#findings">Findings</a></li>
+<li><a href="#summarizing-the-result-of-the-analysis">Summarizing the result of the analysis</a></li>
 <li><a href="#take-away">Take away</a></li>
 </ul></li>
 </ul>
 </div>
 
-<p>In this space, I will be sharing my thought on data and data science related subjects that I find interesting and educational. If I find, what I consider, good articles from other data enthusiasts and practitioners, I will find space for theme here.</p>
-<div id="blog_1---hellow-world" class="section level1">
-<h1>Blog_1 - Hellow World</h1>
+<p>In this space, I will be sharing my thought on data and data science related subjects that I find interesting and educational. If I find, what I consider to be a good articles from other data enthusiasts and practitioners, I will find space for theme here.</p>
+<div id="blog_1---hello-world" class="section level1">
+<h1>Blog_1 - Hello World</h1>
 <p><strong><em>11/04/2019</em></strong><br />
-Picking the subject matter for what I wanted to discuss on the first blog was harder than I thought. At the end, I wanted to pay homage to famous “mtcars” dataset. A dataset that is frequently used in the data science community to illustrate data analysis concepts. I’ve used mtcars dataset quite a bit to test tidying, transofrming, visualizing, modeling and even machine learning.</p>
-<p>Dependin on the the question and the data type there are many workflow models to choose from. A typical data analysis model follow a frame work simlary to what you see on Fig1. <br></p>
+Picking the subject matter for what I wanted to discuss on the first blog was harder than I thought. At the end, I wanted to pay homage to the <strong>mtcars</strong> dataset, from 1974 Motor Trend US magazine. A dataset that is frequently used in the data science community to illustrate data analysis concepts. I have used mtcars dataset quite a bit to test tidying, transforming, visualizing, modeling and even machine learning over the years.</p>
+<p>Depending on the the question you want answered, and the data type you have on hand, there are many workflow models to choose from when analyzing a data. A typical data analysis model follow a frame work similar to what you see on Fig1. <br></p>
 <pre class="r"><code>knitr::include_graphics(&quot;fig/DataScienceProcess.png&quot;)</code></pre>
 <div class="figure" style="text-align: center">
 <img src="fig/DataScienceProcess.png" alt="Fig 1: Data Scince work flow from Harvard University Data Science Course" width="50%" height="420px" />
@@ -378,18 +378,19 @@ Fig 1: Data Scince work flow from Harvard University Data Science Course
 <p>We are going to use the mtcars dataset and go thru the first three stages of analysis - Asking the question, getting and preparing the data and explorring and visualizing the data.</p>
 <div id="formualting-the-question" class="section level2">
 <h2>Formualting the Question</h2>
-<p>The first order of business before starting any analysis is to perpare a set of questions we want to ask our data. The questions should be as detailed as possible, bcecuase generalized questions tend to not yield helpful answers from data. In practice, more questions arsie once we start digging into the data and know more about what other hidden answers can be extracted from data. For this blog analysis of mtcars we will ask three questions and keep the questions there for brevity.</p>
-<p><strong>Let us set a scenario to help frame the questions:</strong> Suppose you want to puchase a vehicle and walk onto a used car sales lot that has 32 used cars in a lot. Each car has its own features such as miles per galon, number of cylinders, trasmission type etc. In the mtcars dataset there are 11 features listed for each car. To shorten the list to few cars you want to take a look at, you have the following three questions in mind:</p>
+<p>The first order of business before starting any analysis is to prepare a set of questions we want to ask our data. The questions should be as detailed as possible, because generic questions tend to not yield helpful answers from data. In practice, more questions arise once we start digging into the data and know more about what other hidden answers can be extracted from data. For this blog analysis of mtcars dataset, we will ask three questions and limit the questions to those for brevity.</p>
+<p><strong>Let us set a scenario to help frame the questions:</strong> Suppose you want to puchase a vehicle and walk onto a used car sales lot that has 32 used cars. Each car has its own features such as miles per galon, number of cylinders, trasmission type etc. In the mtcars dataset there are 11 features listed for each car. To shorten the list to few cars you want to take a look at, you have the following three questions in mind:</p>
 <p>Your objective is to buy a car that consumes the least amount of gas per mile. So, the “mpg” is the feature we will focus on to formulate our the questoins.<br />
-1/ You don’t want to spend too much money on gas, so you want to know “which car has the maximum and which car has the minimum mpg fro all the cars in the lot”.<br />
+1/ You don’t want to spend too much money on gas, so you want to know “which car has the maximum and which car has the minimum mpg for all the cars in the lot”.<br />
 2/ The cars on the lot have either 4, 6 or 8 cylinders. You want to know “what the average mpg for each cylinder type?”<br />
 3/ Lastly, you want to know for each cylinder group “which cars are the most fuel effcient - the top 5%”</p>
 <p>Hopefully, the three questions will narrow down the list for your choice!</p>
-<p>_ It is assumed the reader has basic understanding of tyidyverse and/or R to follow the script and what it does. <a href="https://www.tidyverse.org/">To learn more go here</a>_</p>
+<p><em>It is assumed the reader has basic understanding of tyidyverse and/or R to follow the script and what it does. <a href="https://www.tidyverse.org/">To learn more go here</a></em></p>
+<p>With that said, lets dive right into analyzing the data.</p>
 </div>
 <div id="importing-and-cleaning-the-data" class="section level2">
 <h2>Importing and cleaning the data</h2>
-<p>On a typical analysis, getting, cleaning and transforming data takes up to 80% of the time. This is crtical stage for any analysis, because without targetted quality data, the outcome is pretty much usless. The mtcars dataset is already in tidy format - it is already cleaned up and in a table with distinct rows and the same features assembled in each row.</p>
+<p>On a typical analysis, getting, cleaning and transforming data takes up to 80% of the time. This is critical stage for any analysis, because without targeted quality data, the outcome is pretty much useless. The mtcars dataset is already in tidy format - it is already cleaned up and in a table with distinct rows and the same features assembled in each column.</p>
 Take a look at the data (scroll up/down to see all)
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:300px; overflow-x: scroll; width:800px; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -1653,13 +1654,13 @@ Volvo 142E
 </table>
 </div>
 <p><br></p>
-<p>Although the matcars dataset is in tidy format and has no missing values to be concened about, it is still row and need further transformation to help us answer the questions raised. I use tidyverse and base R fucntions to get the data ready for analysis. The dataset is relativelysmall, it contains 32 observations and 11 features. But the same process would have been sued if the data contained houndreds of thousands of observations and features.</p>
+<p>Although the matcars dataset is in tidy format and has no missing values to be concerned about, it is still row and need further transformation to help us answer the questions raised. I use <em>tidyverse</em> and base R functions to get the data ready for analysis. The dataset is relatively small, it contains 32 observations and 11 features. But the same process would have been sued if the data contained hundreds of thousands of observations and features.</p>
 </div>
 <div id="transofrm-and-explore-the-data" class="section level2">
 <h2>Transofrm and Explore the data</h2>
-<p>Next let us prepare the row data for analysis. We will create 4 datasets from the original, to help answer the questions we’ve raised.</p>
-<p>The first data set (A) simply adds the car model name as a feature. This is important because we want to use the car name to lable to points. The second dataset (B), extracts the maximum and minimum mpg from all the cars. The thrid dataset (C) calculates the average mpg for each cylinder types. And the last datset (D) extracts the top 5% mpg efficient cars in each cylinder group.</p>
-<pre class="r"><code>library(dplyr)
+<p>Next we will transform the original mtcars dataset that will answer questions raised. We will generate 4 datasets targeting the questions raised. The first one help us understand the impact of a car weight on mpg, and the other three target each question. <em>I will cover feature relationships and feature selection that helps us understand the data on another blog</em></p>
+<p>The first data set (A - df) simply adds the car model name as a feature. This is important because we want to use the car name to label to data points. The second dataset (B - mx_mpg) extracts the which cars have maximum and which cars have minimum mpg from all the cars. The third dataset (C - avt_mpg) calculates the average mpg for each cylinder group, the cars in the lot have either 4, 6 or 8 cylinders. And the last datset (D - top_5) extracts the top 5%, most efficient, cars in each cylinder group.</p>
+<pre class="r"><code>library(dplyr)  #load the library for transofrorming data
 
 # A. add the model name as a variaiable
 df &lt;- mtcars %&gt;% mutate(car_model = row.names(.))
@@ -1676,13 +1677,14 @@ avg_mpg &lt;- df %&gt;% group_by(cyl) %&gt;% summarize(avg_wt = mean(wt), avg_mp
 # D. In each cyl group, cars whose mpg is in the top 5%
 top_5 &lt;- df %&gt;% group_by(cyl) %&gt;% filter(mpg &gt; quantile(mpg, probs = 0.95)) %&gt;% 
     ungroup() %&gt;% mutate_each(list(as.factor), cyl)</code></pre>
-<p>As you can see in the code, I used dplyr verbs such as (gropu_by, summarize, mutate, filter) and stastical functions such (max, min, mean, quantile) and weaved them together to generate additionl dataset that help answer the question we raised. This part of the analysis can be done many diffrent ways and it is both an art and a science.</p>
+<p>As you can see in the code, I used dplyr verbs such as (gropu_by, summarize, mutate, filter) and statical functions such (max, min, mean, quantile) and weaved them together to generate additional the four new dataset that help answer the question we raised. This part of the analysis can be done many different ways and it is both an art and a science.</p>
 </div>
 <div id="lets-us-visualize-the-answers-to-the-question" class="section level2">
 <h2>Lets us visualize the answers to the question</h2>
-<p>We will use the dataset created to generate four plots. Each plot will give you the answer to the questoins we have raised earlier.</p>
-<div id="a.-base-plot---what-does-the-relationship-betwee-wieght-and-mpg-look-like" class="section level3">
-<h3>A. Base plot - what does the relationship betwee wieght and mpg look like</h3>
+<p>After importing, transforming and exploring the data, we want to visualize and communicate the result. We can generate documentation to report the findings, but for now let us use graphic plots to keep it brief. Visual communication is very powerful because it will not only show the point of interest, but gives reference that is helpful when you compare multiple data points.</p>
+<p>We are going to use the four dataset created and <em>grammar of graphic plot v2</em> [ggplot2]<a href="https://ggplot2.tidyverse.org/" class="uri">https://ggplot2.tidyverse.org/</a> to generate the visuals that answer the questions.</p>
+<div id="a.-base-plot---shows-the-impact-of-weight-on-mpg" class="section level4">
+<h4>A. Base plot - shows the impact of weight on mpg</h4>
 <pre class="r"><code>library(ggplot2)
 
 gg &lt;- ggplot(df, aes(x = wt, y = mpg)) + geom_point() + theme(legend.position = c(0.85, 
@@ -1690,36 +1692,38 @@ gg &lt;- ggplot(df, aes(x = wt, y = mpg)) + geom_point() + theme(legend.position
 gg</code></pre>
 <p><img src="fig/blog1Viz1-1.png" width="600px" height="420px" style="display: block; margin: auto;" /></p>
 </div>
-<div id="b.-answer-the-questoin--which-cars-have-maximum-and-minimum-mpg-from-all-the-cars-in-the-log" class="section level3">
-<h3>B. Answer the questoin -Which cars have maximum and minimum mpg from all the cars in the log</h3>
+<div id="b.-answers-the-question---which-cars-have-maximum-and-minimum-mpg-from-all-the-cars-in-the-lot" class="section level4">
+<h4>B. Answers the question - Which cars have maximum and minimum mpg from all the cars in the lot</h4>
 <pre class="r"><code>gg + geom_point(data = mx_mpg, aes(x = wt, y = mpg, fill = cyl), shape = 21, 
     color = &quot;black&quot;, size = 5, stroke = 1) + geom_text(data = mx_mpg, aes(label = car_model), 
     size = 4.5, vjust = -0.8, col = &quot;blue&quot;) + xlim(1, 6) + ylim(10, 40)</code></pre>
 <p><img src="fig/blog1Viz2-1.png" width="600px" height="420px" style="display: block; margin: auto;" /></p>
 </div>
-<div id="c.-answer-the-question---what-is-the-average-mpg-for-each-cylinder-group-4-6-8" class="section level3">
-<h3>C. Answer the question - what is the average mpg for each cylinder group (4, 6, 8)</h3>
+<div id="c.-answers-the-question---what-is-the-average-mpg-for-each-cylinder-group-4-6-8" class="section level4">
+<h4>C. Answers the question - what is the average mpg for each cylinder group (4, 6, 8)</h4>
 <pre class="r"><code>gg + geom_point(data = avg_mpg, aes(x = avg_wt, y = avg_mpg, fill = cyl), shape = 21, 
     color = &quot;black&quot;, size = 5, stroke = 1) + geom_text(data = avg_mpg, aes(x = avg_wt, 
     y = avg_mpg, label = note), size = 4.5, hjust = -0.2, col = &quot;blue&quot;)</code></pre>
 <p><img src="fig/blog1Viz3-1.png" width="600px" height="420px" style="display: block; margin: auto;" /></p>
 </div>
-<div id="d.-answer-the-question---what-are-the-top-5-mpg-cars-for-each-cylinder-group" class="section level3">
-<h3>D. Answer the question - What are the top 5% mpg cars for each cylinder group</h3>
+<div id="d.-answers-the-question---what-are-the-top-5-mpg-cars-for-each-cylinder-group" class="section level4">
+<h4>D. Answers the question - What are the top 5% mpg cars for each cylinder group</h4>
 <pre class="r"><code>gg + geom_point(data = top_5, aes(x = wt, y = mpg, fill = cyl), size = 4.5, 
     shape = 21, color = &quot;black&quot;, size = 5, stroke = 1) + geom_text(data = top_5, 
     aes(label = car_model), hjust = -0.2, col = &quot;blue&quot;)</code></pre>
 <p><img src="fig/blog1Viz4-1.png" width="600px" height="420px" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-<div id="findings" class="section level2">
-<h2>Findings</h2>
-<p>It is clear from the visualization that Toytoa Corola is the most fuel efficient car with 33.9 mpg, and Cadillac Fleet wood is the least efficient with 10.4 mpg. It is also clear that the heavier the car is the higher the gas consumption. We can aslo se the avg mpg for each cylinder type, and the fewer the number of cylinders the higher mpg. Finally, we can see that <strong><em>Totyta Corolla</em></strong>, <strong><em>Hornet 4 Drive</em></strong> and <strong><em>Pontiac Firebird</em></strong> are in the top 5 percentile of each cylinder group. With this information on hand, you can make “data driven” decision and pcick acar to take for test drive.</p>
+<div id="summarizing-the-result-of-the-analysis" class="section level2">
+<h2>Summarizing the result of the analysis</h2>
+<p>It is clear from the graphic visualization that Toytoa Corola is the most fuel efficient car with 33.9 mpg, and Cadillac Fleet wood is the least efficient with at 10.4 mpg. It is also clear that the heavier the car is the higher the gas consumption. We can also see that the average the fewer the number of cylinders in a car, the higher average mpg. <strong><em>Totyta Corolla</em></strong>, <strong><em>Hornet 4 Drive</em></strong> and <strong><em>Pontiac Firebird</em></strong> are in the top 5 percentile of each cylinder group. With this information on hand, you can make <strong>data driven</strong> decision and pick a car to take for test drive.</p>
 </div>
 <div id="take-away" class="section level2">
 <h2>Take away</h2>
-<p>To keep it simple, we used a single feature (mpg) and small dataset to illustrate the process, but in the real world we use multiple feature and a much larger dataset. However, the same workflow can be used regardless of the size of the data. We can extend the anslysis to modeling and creating apps that can utlize what is learned from the analysis. On this example, we took a row data, transform and used statstics to extract the answeres to our questions. We generated plots to visualize the result and gives us refrence. Hope you enjoyed this first blog! Feel free to drop me an <a href="abiyu.giday@datarecode.com">email</a> or DM tweet me <span class="citation">@abiyugiday</span>, if you have any question or want to discuss further.</p>
-<hr />
+<p>On this blog, we took a row data, transform and applied statistics to summarize and extract the answers to our questions. We generated plots to visualize the result. We focused on single feature (mpg) out of eleven, and small dataset to illustrate the data science process, and how to extract value we are seeking. The same process can be followed to a large dataset with thousands of features and observations.</p>
+<em>Hope you enjoyed this first blog! Feel free to drop me an <a href="abiyu.giday@datarecode.com">email</a> or DM tweet me @<a href="www.linkedin.com/in/abiyugiday/">abiyugiday</a>, if you have any question or want to discuss further.</em> <br><br />
+—<br />
+
 <div class="footer2">
 <p>
 </p>
