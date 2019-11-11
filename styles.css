@@ -19,7 +19,7 @@ p {
   } 
 body {
       text-align: justify;
-      /* word-break: break-all; */
+      word-break: normal; 
       font-size: 16px;
       font-weight:400;
      } 
