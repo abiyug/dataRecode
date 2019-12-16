@@ -317,14 +317,7 @@ div.tocify {
 
 </style>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TK69SF8G8N"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-TK69SF8G8N');
-</script>
+
 
 </head>
 
@@ -517,7 +510,7 @@ function magnify(imgID, zoom) {
 Moving data from Excel to R.
 </p>
 </div>
-<p><strong>The Challenge:</strong><br />
+<p><strong>The Challenge</strong><br />
 Microsoft released the first modern day Excel in 1985. Over the years, Excel spreadsheets are created for all kinds of businesses including research, clinical trials, statistical summarization, engineering and financial services. Historically, Excel is organized and formatted for human consumption. As such, structure and format of the data was not high on the list when preparing a report with Excel. Every preparer used his own expertise to present the data, depending on the field he is in and his/her audience.</p>
 <p>However, with the advent of relatively cheap powerful computers, and a data science workflow, the average business is enabled to process huge amount of data and extract valuable actionable insights. But there are a couple of challenges: 1) The historical Excel data was not prepared with data analytics in mind and, therefore, is in untidy format. 2) To analyze data with modern day compute, the data has to be pre-prepared in a tidy format to extract valuable insight.</p>
 <p>This is where R comes in. R isn’t the only programming language to format messy data (python comes to mind), but it has very set of powerful tools that will convert historical Excel data into a tidy format.</p>
@@ -526,7 +519,7 @@ Microsoft released the first modern day Excel in 1985. Over the years, Excel spr
 <p><img id="myimage" src="fig/Excel_untidy_1.png" height="100%" width="100%" align="middle"></p>
 </div>
 <p>In reeality, most organizations have historical data that look a lot like the figure shown.</p>
-<p><strong>The Opportunity:</strong><br />
+<p><strong>The Opportunity</strong><br />
 The good news is Extracting and formatting historical data is possible with R tools (will discuss a use case shortly). It takes some effort to get the data prepared, because every Excel ,possibility , is not formatted in standardized format. But once it is transformed to <strong>Tidy</strong> format, and the coloring/notes/formula used in the excel quantified, a valuable actionable insight can be pulled out with additional powerful set of R libraries.</p>
 <h3 id="use-case">Use Case:</h3>
 I came across California agriculture Export data in Excel. The data lists 50 commodities that were exported to 27 countries, world wide, for two years (2015 and 2016).
