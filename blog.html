@@ -316,6 +316,7 @@ div.tocify {
 
 
 </style>
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TK69SF8G8N"></script>
 <script>
@@ -324,7 +325,6 @@ div.tocify {
   gtag('js', new Date());
   gtag('config', 'G-TK69SF8G8N');
 </script>
-
 
 </head>
 
@@ -425,6 +425,7 @@ div.tocify {
 
 
 <p>In this space, I will be sharing my thought on data and data science related subjects that I find interesting and educational. If I find, what I consider to be a good article from other data enthusiasts and practitioners, I will find space for them here.</p>
+<!-- start of stle for the magnfying glass for blog 2-->
 <style>
 * {box-sizing: border-box;}
 
@@ -498,38 +499,31 @@ function magnify(imgID, zoom) {
   }
 }
 </script>
+<!-- End  of stle for the magnfying glass for blog 2 -->
 <div id="blog-2---transform-and-import-excel-data-to-r" class="section level1">
 <h1>Blog 2 - Transform and Import Excel data to R</h1>
-<img src="fig/Excel_to_R_2.png" align="left" width="35%" height="35%" /> On many cases, there is quantifiable advantage to working with data in R vs Excel. The motivation for this blog is two fold. The first is to show that “untidy” Excel data conversion to “tidy” data is possible with “tidyverse” packages alone. In case you the reader aren’t familiar with tidyvers, “<a href="https://www.tidyverse.org/">Tidyverse</a> is a coherent system of R packages for data manipulation, exploration and visualization that share a common design philosophy.” <br> <a class="btn btn-info" data-toggle="collapse" href="#collapseExample_2" aria-expanded="false" aria-controls="collapseExample_1"> Read More </a>
+<p><img src="fig/Excel_to_R_2.png" align="left" width="35%" height="35%" /> Organizations large and small have begun migrating unstructured Excel data to structured tables to glean valuable insight and improve efficiency. On many cases, there is quantifiable advantage to working with data in structured (tidy) format vs unstructured (untidy) format. The motivation for this blog is two fold. The first is to show that “untidy” Excel data conversion to “tidy” data is possible with “tidyverse” packages alone.</p>
+<br> <a class="btn btn-info" data-toggle="collapse" href="#collapseExample_2" aria-expanded="false" aria-controls="collapseExample_1"> Read More </a>
 </p>
 <div id="collapseExample_2" class="collapse">
 <div class="card card-block">
-<p>The second is the advantages of working with tidy data in R , including, easily pulling statistical summarization and data visualization. Not covered here is using the data in R to train a machine learning algorithm, which isn’t possible with Excel. To be fair, Excel was not designed for machine learning.</p>
-<div class="alert alert-dismissible alert-primary">
-<p><button type="button" class="close" data-dismiss="alert">×</button> <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.</p>
-</div>
+<p>In case you the reader aren’t familiar with tidyverse, “<a href="https://www.tidyverse.org/">Tidyverse</a> is a coherent system of R packages for data manipulation, exploration and visualization that share a common design philosophy.” The second motivation is to show the advantages of utilizing R programming language to transform untidy Excel data.</p>
 <h2 id="motivation">Motivation</h2>
 <p>Spreadsheet is one of the most prevalent tool to store and share data. Survey from business and government organization show upwards of 90% still use spreadsheet to analyze data and make decisions. Microsoft Excel is, by far, the leading spreadsheet application used for organization sales forecasting, survey, result of clinical test, project status report, cash flow statements, and invoicing to name a few.</p>
 <p>To take advantage of advancement in analytic, organizations have begun transitioning Excel data to tidy data format. <a href="https://en.wikipedia.org/wiki/Tidy_data">Tidy data</a> is a dataset that are arranged with each variable saved in its own column, and each observation saved in its own row. Information organized in a tidy format, as we will see later on, make it easy to pull summary statistics, generate visualization and some of the advanced analytics including Machine Learning and Aritificial Inteligence.</p>
-<div class="figure" style="text-align: center">
-<img src="fig/tidy_data.png" alt="Moving data from Excel to R." width="600px" height="50%" />
-<p class="caption">
-Moving data from Excel to R.
-</p>
-</div>
+<p><img src="fig/tidy_data.png" width="600px" height="50%" style="display: block; margin: auto;" /></p>
 <p><strong>The Challenge</strong><br />
 Microsoft released the first modern day Excel in 1985. Over the years, Excel spreadsheets are created for all kinds of businesses including research, clinical trials, statistical summarization, engineering and financial services. Historically, Excel is organized and formatted for human consumption. As such, structure and format of the data was not high on the list when preparing a report with Excel. Every preparer used his own expertise to present the data, depending on the field he is in and his audience.</p>
-<p>However, with the advent of relatively cheap powerful computers, and a data science workflow, the average business is enabled to process huge amount of data and extract actionable insights. But there are a couple of challenges before value extraction:<br />
-1) The historical Excel data was not prepared with data analytics in mind and, therefore, is in untidy format.<br />
+<p>However, with the advent of relatively cheap powerful computers, and a data science workflow, the average business is enabled to process huge amount of data and extract actionable insights. But before value extraction, a number of steps have to be considred including: 1) The historical Excel data was not prepared with data analytics in mind and, therefore, is in untidy format.<br />
 2) To analyze data with modern day compute, the data has to be transformed to tidy format.</p>
-<p>This is where R comes in. R isn’t the only programming language to format messy data, python comes to mind. R ecosystem comes with a very powerful tools that convert historical 'untidy' Excel data into a tidy format.</p>
-<p>Before jumping to “how-to” transform untidy Excel data to tidy format, let us take a look at sample Excel data in the following image. You can see, by hovering the magnifying glass over the four sheets (A, B,C &amp; D), that while the data makes intuitive sense to humans, the fact that data and variable are mixed, columns containing multiple information make it <strong>untidy</strong>, or not suitable for extracting insight in a data science workflow.</p>
+<p>This is where R comes in. R isn’t the only programming language to format messy data, python comes to mind. R ecosystem comes with a very powerful tools that convert historical ‘untidy’ Excel data into a tidy format.</p>
+<p>Before jumping to “how-to” transform untidy Excel data to tidy format, let us take a look at sample Excel data in the following image. You can see, by hovering the magnifying glass over the four sheets (A, B,C &amp; D), that while the data makes intuitive sense to humans, the fact that data and variable are mixed, columns containing multiple values makes it <strong>untidy</strong>.</p>
 <div class="img-magnifier-container">
 <p><img id="myimage" src="fig/Excel_untidy_1.png" height="100%" width="100%" align="middle"></p>
 </div>
 <p><strong>The Opportunity</strong><br />
 The good news is extracting and tidying historical Excel data is made possible with R tools (will discuss a use case shortly). It takes some effort to get the data prepared, because every Excel ,possibly , is not organized in standardized format. Once data is transformed to <strong>Tidy</strong> format, and the coloring/notes/formulas used in the excel spreadsheet quantified with R, a valuable actionable insight can be pulled out with additional powerful set of R libraries.</p>
-<h3 id="use-case">Use Case:</h3>
+<h3 id="use-case">Use Case</h3>
 I came across California agriculture Export data in Excel. The data lists 50 commodities that were exported to 27 countries/regions world wide, for two years (2015 and 2016).
 <div class="figure" style="text-align: center">
 <img src="fig/california_agri.png" alt="The Callifornia Agricultural Export Data." width="40%" height="420px" />
@@ -537,7 +531,7 @@ I came across California agriculture Export data in Excel. The data lists 50 com
 The Callifornia Agricultural Export Data.
 </p>
 </div>
-<p>(If you want to follow along the script, <a href="https://github.com/abiyug/dataRecode/blob/master/blogData/Excel-to-R/cali_agri_export.csv">download the data from here</a>)</p>
+<p>(If you want to follow along the script,. <a href="https://github.com/abiyug/dataRecode/blob/master/blogData/Excel-to-R/cali_agri_export.csv">download the data from here</a>)</p>
 <h3 id="questions-we-can-ask-the-data">Questions we can ask the data</h3>
 <p>The California commodity agricultural data in Excel is formatted so that it is easy to read, however notice that the commodity names are part of the observation value. Now, say I want to find the top 10 countries the commodities were exported to, or the top 5% commodities for both 2015 and 2016, or What is the year over year change for each agricultural product for each country. It requires some advanced Excel scripting to extract that information from the provided Excel. However, the mentioned questions and many other questions can be answered intuitively once we convert the data to tidy format that looks like this.</p>
 <div data-pagedtable="false">
@@ -546,7 +540,7 @@ The Callifornia Agricultural Export Data.
   </script>
 </div>
 <h2 id="transforming-the-data">Transforming the Data</h2>
-<p>We will use the dplyr and tidyr packages (which are part of the tidyverse bundle) to perform the data transformation. The following high level outline brakes the steps taken to generate the the final tidy data.</p>
+<p>To transrom the data I will use dplyr and tidyr packages which are part of the tidyverse bundle. The following high level outline brakes the steps taken to generate the final tidy data.</p>
 <p>1/ Import Excel<br />
 2/ Create a commodities look up table<br />
 3/ Create a partial filled tidy table<br />
@@ -576,10 +570,10 @@ df &lt;- cali_agri_export %&gt;%
              select(1:3) %&gt;% 
              na.omit() %&gt;% #remove NA lines
              select(base = 1, yr_2015 = 2, yr_2016 = 3) %&gt;%
-             mutate(group = case_when(str_detect(base, &quot;[0-9]+&quot;) ~ &quot;11&quot;)) %&gt;% 
+             mutate(group = case_when(str_detect(base, &quot;[0-9]+&quot;) ~ &quot;11&quot;)) %&gt;% #11 place hoder dummy data
              mutate_each(list(as.numeric), group) %&gt;%
-             tidyr::separate(base, sep = &quot;_&quot;,c(&quot;comdty&quot;, &quot;rank&quot;)) %&gt;%
-             tidyr::fill(rank) %&gt;% # $ shot!
+             tidyr::separate(base, sep = &quot;_&quot;,c(&quot;comdty&quot;, &quot;rank&quot;)) %&gt;% #split base variable
+             tidyr::fill(rank) %&gt;% 
              mutate_at(vars(rank:group), ~replace(., is.na(.), 0))  # replace na to 0
 
 
@@ -618,7 +612,7 @@ rmarkdown:::print.paged_df(df_tidy)</code></pre>
   </script>
 </div>
 <h2 id="let-us-visualize">Let us visualize</h2>
-<p>We can ask the questions mentioned here<a href="#questions-we-can-ask-the-data">Questions we can ask the data</a> to get answeres. But, let us generate Generate a bar plot for all countries and ther rspective commodity exported with <a href="https://ggplot2.tidyverse.org/"><strong>ggplot2</strong></a> for botth 2015 and 2016. Canada and ‘other destinations’ are the two most California commodity export destinations. I’ve explicitly removed the two, for aesthetics reasons.</p>
+<p>We can ask the questions mentioned here<a href="#questions-we-can-ask-the-data">Questions we can ask the data</a> to get answers. But, let us generate Generate a bar plot for all countries and their respective commodity exported with <a href="https://ggplot2.tidyverse.org/"><strong>ggplot2</strong></a> for both 2015 and 2016. Canada and ‘other destinations’ are the two most California commodity export destinations. I’ve explicitly removed the two, for aesthetics reasons.</p>
 <pre class="r"><code># Note: 1/ The commodity names abbrivated for brevity 2/ Canda and &#39;other
 # destinations&#39; are removed for aesthetic reason
 gg &lt;- df_tidy %&gt;% pivot_longer(3:4) %&gt;% filter(!country %in% c(&quot;canada&quot;, &quot;other destinations&quot;)) %&gt;% 
@@ -653,9 +647,6 @@ magnify("myimage", 3);
 <div class="card card-block">
 
 <p>Depending on the the question you want answered, and the data type you have on hand, there are many workflow models to choose from when analyzing a data. A typical data analysis model follows a framework similar to what you see on Fig @ref(fig:workflow).</p>
-<div class="alert alert-dismissible alert-primary">
-<p><button type="button" class="close" data-dismiss="alert">×</button> <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.</p>
-</div>
 <pre class="r"><code>knitr::include_graphics(&quot;fig/DataScienceProcess.png&quot;)</code></pre>
 <div class="figure" style="text-align: center">
 <img src="fig/DataScienceProcess.png" alt="Fig 1: Data science workflow from Harvard University Data Science Course" width="50%" height="420px" />
