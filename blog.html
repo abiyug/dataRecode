@@ -424,7 +424,7 @@ div.tocify {
 </div>
 
 
-<p>In this space, I will be sharing my thought on data and data science related subjects that I find interesting and educational. If I find, what I consider to be a good articles from other data enthusiasts and practitioners, I will find space for theme here.</p>
+<p>In this space, I will be sharing my thought on data and data science related subjects that I find interesting and educational. If I find, what I consider to be a good article from other data enthusiasts and practitioners, I will find space for them here.</p>
 <style>
 * {box-sizing: border-box;}
 
@@ -510,7 +510,7 @@ function magnify(imgID, zoom) {
 </div>
 <h2 id="motivation">Motivation</h2>
 <p>Spreadsheet is one of the most prevalent tool to store and share data. Survey from business and government organization show upwards of 90% still use spreadsheet to analyze data and make decisions. Microsoft Excel is, by far, the leading spreadsheet application used for organization sales forecasting, survey, result of clinical test, project status report, cash flow statements, and invoicing to name a few.</p>
-<p>To take advantage of advancement in analytic, organizations have begun transitioning Excel data to tidy data format. <a href="https://en.wikipedia.org/wiki/Tidy_data">Tidy data</a> is a dataset that are arranged with each variable saved in its own column, and each observation saved in its own row. Information organized in a tidy format, as we will see later on, allows summary statistics, visual summary and some of the advanced analytics including MA and AI.</p>
+<p>To take advantage of advancement in analytic, organizations have begun transitioning Excel data to tidy data format. <a href="https://en.wikipedia.org/wiki/Tidy_data">Tidy data</a> is a dataset that are arranged with each variable saved in its own column, and each observation saved in its own row. Information organized in a tidy format, as we will see later on, make it easy to pull summary statistics, generate visualization and some of the advanced analytics including Machine Learning and Aritificial Inteligence.</p>
 <div class="figure" style="text-align: center">
 <img src="fig/tidy_data.png" alt="Moving data from Excel to R." width="600px" height="50%" />
 <p class="caption">
@@ -518,27 +518,27 @@ Moving data from Excel to R.
 </p>
 </div>
 <p><strong>The Challenge</strong><br />
-Microsoft released the first modern day Excel in 1985. Over the years, Excel spreadsheets are created for all kinds of businesses including research, clinical trials, statistical summarization, engineering and financial services. Historically, Excel is organized and formatted for human consumption. As such, structure and format of the data was not high on the list when preparing a report with Excel. Every preparer used his own expertise to present the data, depending on the field he is in and his/her audience.</p>
-<p>However, with the advent of relatively cheap powerful computers, and a data science workflow, the average business is enabled to process huge amount of data and extract valuable actionable insights. But there are a couple of challenges:<br />
+Microsoft released the first modern day Excel in 1985. Over the years, Excel spreadsheets are created for all kinds of businesses including research, clinical trials, statistical summarization, engineering and financial services. Historically, Excel is organized and formatted for human consumption. As such, structure and format of the data was not high on the list when preparing a report with Excel. Every preparer used his own expertise to present the data, depending on the field he is in and his audience.</p>
+<p>However, with the advent of relatively cheap powerful computers, and a data science workflow, the average business is enabled to process huge amount of data and extract actionable insights. But there are a couple of challenges before value extraction:<br />
 1) The historical Excel data was not prepared with data analytics in mind and, therefore, is in untidy format.<br />
-2) To analyze data with modern day compute, the data has to be pre-prepared in a tidy format to extract valuable insight.</p>
-<p>This is where R comes in. R isn’t the only programming language to format messy data (python comes to mind), but it has very set of powerful tools that will convert historical Excel data into a tidy format.</p>
-<p>Before jumping to the “how-to” transition Excel data to tidy format, let us take a look at sample Excel data in the following image. You can see, by hovering the magnifying glass over the four sheets (A, B,C &amp; D), that while the data makes intuitive sense to humans, the fact that data and variable are mixed, columns containing multiple information make it <strong>untidy</strong>, or not suitable for extracting insight.</p>
+2) To analyze data with modern day compute, the data has to be transformed to tidy format.</p>
+<p>This is where R comes in. R isn’t the only programming language to format messy data, python comes to mind. R ecosystem comes with a very powerful tools that to convert historical 'untidy' Excel data into a tidy format.</p>
+<p>Before jumping to “how-to” transition Excel data to tidy format, let us take a look at sample Excel data in the following image. You can see, by hovering the magnifying glass over the four sheets (A, B,C &amp; D), that while the data makes intuitive sense to humans, the fact that data and variable are mixed, columns containing multiple information make it <strong>untidy</strong>, or not suitable for extracting insight in a data science workflow.</p>
 <div class="img-magnifier-container">
 <p><img id="myimage" src="fig/Excel_untidy_1.png" height="100%" width="100%" align="middle"></p>
 </div>
-<p>In reeality, most organizations have historical data that look a lot like the figure shown.</p>
+<p>In reeality, most organizations have historical data that look a lot like the figure shown they can leverage once in tidy format.</p>
 <p><strong>The Opportunity</strong><br />
-The good news is Extracting and formatting historical data is possible with R tools (will discuss a use case shortly). It takes some effort to get the data prepared, because every Excel ,possibility , is not formatted in standardized format. But once it is transformed to <strong>Tidy</strong> format, and the coloring/notes/formula used in the excel quantified, a valuable actionable insight can be pulled out with additional powerful set of R libraries.</p>
+The good news is Extracting and tidying historical data is possible with R tools (will discuss a use case shortly). It takes some effort to get the data prepared, because every Excel ,possibly , is not organized in standardized format. Once data is transformed to <strong>Tidy</strong> format, and the coloring/notes/formulas used in the excel spreadsheet quantified with R, a valuable actionable insight can be pulled out with additional powerful set of R libraries.</p>
 <h3 id="use-case">Use Case:</h3>
-I came across California agriculture Export data in Excel. The data lists 50 commodities that were exported to 27 countries, world wide, for two years (2015 and 2016).
+I came across California agriculture Export data in Excel. The data lists 50 commodities that were exported to 27 countries/regions world wide, for two years (2015 and 2016).
 <div class="figure" style="text-align: center">
 <img src="fig/california_agri.png" alt="The Callifornia Agricultural Export Data." width="40%" height="420px" />
 <p class="caption">
 The Callifornia Agricultural Export Data.
 </p>
 </div>
-<p>(This excel svaed in csv format will be made avilable in blog folder here, if you want to follow along the script. <a href="https://github.com/abiyug/dataRecode/blob/master/blogData/Excel-to-R/cali_agri_export.csv">Get the data from here</a>)</p>
+<p>(I have made the data avilable in blog folder here, if you want to follow along the script. <a href="https://github.com/abiyug/dataRecode/blob/master/blogData/Excel-to-R/cali_agri_export.csv">Get the data from here</a>)</p>
 <h3 id="questions-we-can-ask-the-data">Questions we can ask the data</h3>
 <p>The Excel is formatted so that it is easy to read, however notice that the commodities, which should be variable names, are part of the observation value. Now, say I want to find the top 10 countries the commodities were exported to, or the top 5% commodities for both 2015 and 2016, or What is the year over year change for each agricultural product for each country. It requires some advanced Excel scripting to extract that information from the provided Excel. However, the mentioned questions and many other questions can be answered intuitively once we convert the data to tidy format that looks like this.</p>
 <div data-pagedtable="false">
