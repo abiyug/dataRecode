@@ -1,0 +1,49 @@
+---
+title: "Benchmark vs Acuatls Comparator"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    theme: spacelab
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(crosstalk)
+library(ggplot2)
+library(plotly)
+
+# get the data
+df <- read.csv("data/df_fin.csv")
+sd1 <- SharedData$new(df)
+
+```
+
+
+Inputs {.sidebar}
+-----------------------------------------------------------------------
+
+
+```{r selectors}
+filter_select("lob", "Line of Business", sd1, ~lob, multiple = FALSE)
+filter_select("benchmark_type", "Benchmark_type", sd1, ~benchmark_type, multiple = FALSE)
+filter_select("category", "Category", sd1, ~category, multiple = FALSE)
+filter_select("mcg", "MCG", sd1, ~mcg, multiple = FALSE)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+
+### Benchmakr vs Actuals
+
+```{r}
+
+ plot_ly(sd1, x = ~category, y = ~prcnt_bnmrk, type = 'bar', name = 'Benchmark', text = ~label_bnmrk, textposition = 'auto', textfont = list(color = 'white')) %>%
+                  add_trace(y = ~prcnt_actul, name = 'Actuals', text = ~label_actul, textposition = 'auto', textfont = list(color = 'white')) %>%
+    layout(yaxis = list(title = '', ticksuffix = "%"), barmode = 'group',
+           xaxis = list(title = "Category", tickangle = -45)) %>%
+           config(displayModeBar = FALSE, 
+                     displaylogo = FALSE)
+
+```
