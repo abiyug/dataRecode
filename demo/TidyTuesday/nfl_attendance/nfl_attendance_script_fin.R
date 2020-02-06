@@ -31,11 +31,13 @@ df <-
         as.data.frame() 
 
 # data frame that includes average attendace for each year and each team -
+df_2 <-
         attendance %>% 
         select(team_name, year, total) %>% 
         distinct() %>% 
         mutate(avg_attnd = total/16,
                team_name = factor(team_name, levels = df$team_name)) 
+
 
 # Small multiple plot for each team - Plot ordreed from the most Cowboys to the least Texans
 # Texans join the team 2002 
@@ -56,10 +58,10 @@ gg_2 <-
                plot.subtitle = element_text(size = 12, colour = "gray48")) #lightskyblue4
 
 gg_2 <- gg_2 + labs(x ="", 
-                    y ="Average weekly attednance",
-                    title = "Dallas Cowboys lead the legue in stadium attendnce",
-                    subtitle = "200-2019 NFL stadium attedance for Each team.  The red line is the average for the respective team.",
-                    caption = "Note: Plot order most (Cowboys) to the least (Texans)n\Data Source: TidyTuesday via Pro Football Reference\n Analytic by: @abiyugiday") 
+                    y ="Average weekly attendance",
+                    title = "Dallas Cowboys lead the league in stadium attendance",
+                    subtitle = "200-2019 NFL stadium attendance for Each team.  The red line is the average for the respective team.",
+                    caption = "Note: Plot order most (Cowboys) to the least (Texans)\nData Source: TidyTuesday via Pro Football Reference\n Analytic/Viz by: @abiyugiday") 
 
 gg_2 <- gg_2 + theme(text = element_text(size = 10, family = "courgette"))
 gg_2
