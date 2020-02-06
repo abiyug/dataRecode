@@ -39,7 +39,7 @@ df_2 <-
                team_name = factor(team_name, levels = df$team_name)) 
 
 
-# Small multiple plot for each team - Plot ordreed from the most Cowboys to the least Texans
+# Small multiple plot for each team - Plot ordred from the most Cowboys to the least Texans
 # Texans join the team 2002 
 
 gg_2 <-
