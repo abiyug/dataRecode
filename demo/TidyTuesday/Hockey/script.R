@@ -61,7 +61,7 @@ gg <- gg + labs(x ="",
                 y ="Goals Scored",
                 title = "The 700/15 club",
                 subtitle = "How does Overchkin's goal scoring accomplishment compare to Hockey grates?\nOnly 3 NHL players are eligible for the 700 goal scores on their first 15 NHL seasons*",
-                caption = "Note: The first 15 NHL seasons for players who started playing after 1960.\nData Source: http://washingtonpost.com\nAnalytic/Viz by: abiyu.giday[at]dataRecode.com") 
+                caption = "Note: The first 15 NHL seasons for players who started playing after 1960.\nData Source: https://www.hockey-reference.com/ \nAnalytic/Viz by: abiyu.giday[at]dataRecode.com") 
 
 # plot style
 gg <- gg + theme(text = element_text(size = 10, family = "kelly"),
