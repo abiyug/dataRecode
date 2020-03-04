@@ -28,8 +28,9 @@ df_season <-
         select(player, season, goals ) %>%
         group_by(player, season) %>%
         summarize(tot_gols = sum(goals)) %>%
-        mutate(cum_goal = cumsum(tot_gols), row_num = row_number(),
-               sesn = as.numeric(str_extract(season, "[0-9]{1,4}"))) %>% 
+        mutate(cum_goal = cumsum(tot_gols), 
+                row_num = row_number(),
+                   sesn = as.numeric(str_extract(season, "[0-9]{1,4}"))) %>% 
         filter(row_num >= 1, row_num <= 15) %>% 
         ungroup()  
 
@@ -49,7 +50,7 @@ gg <-
         annotation_custom(rasterGrob(img, width=unit(1,"npc"), height=unit(1,"npc")), -Inf, Inf, -Inf, Inf) +
         geom_line(col= "gray56")  +
         geom_line(data = (df_season %>% filter( player %in% c("Wayne Gretzky", "Alex Ovechkin", "Mike Gartner"))), aes(x = as.numeric(sesn), y = cum_goal, group = player, col = player), alpha = .8, size = 1.5) +
-        geom_point(data = df_point, aes(x = as.numeric(sesn), y = cum_goal, col= player), size = 2) +
+        geom_point(data = df_label, aes(x = as.numeric(sesn), y = cum_goal, col= player), size = 2) +
         geom_text_repel(data = df_season %>% filter( player %in% c("Wayne Gretzky", "Alex Ovechkin", "Mike Gartner")) %>% group_by(player) %>% slice(which.max(cum_goal)), aes(x = as.numeric(sesn), y = cum_goal, label = paste0(player,": ",cum_goal), col= player, vjust = 1, hjust = 1)) +
         geom_hline(aes(yintercept=700),  color="cornflowerblue", linetype = "dashed")  + 
         geom_image(data = df_point, aes(x = as.numeric(sesn) + 5, y = cum_goal + 5 , image = headshot), size = .05) +  
