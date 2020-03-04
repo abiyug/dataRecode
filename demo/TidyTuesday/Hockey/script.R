@@ -2,7 +2,7 @@
 #
 # The script compares the cumulative goal scores of NHL's 250 hockey greats. To make the comparison,
 # we will consider only the first 15 seasons of each players goals while playing in the 'NHL'. The 
-# Analysis also limit the players who started playing after 1960. The 15 year cap is examine and compare
+# Analysis also limit the players who started playing after 1960. The 15 year cap is set inorder to compare
 # Alex Overchin's 700 goal achievements in the first 15 season.
 #
 # For: TidyTuesday Challenge
