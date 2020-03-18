@@ -27,7 +27,7 @@ office_ratings <- readr::read_csv('https://raw.githubusercontent.com/rfordatasci
 
 #~~~~ pre-prep clean up
 #regex helper - removes punct, digis
-remove_regex <- "[:punct:]|[:digit:]|parts |part |the |and"
+remove_regex <- "[:punct:]|[:digit:]"
 
 ratings <- office_ratings %>%
         transmute(
