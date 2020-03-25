@@ -8,6 +8,19 @@
 
 # The data comes from the CDC and Veterans Brain Injury Center. Additional stats can be found at CDC.gov.
 #
+
+
+# load libary
+library(tidyverse)
+library(tidyr)
+library(scales)
+library(skimr)
+library(ggrepel)
+library(lemon)
+
+# on-board data
+tbi_military <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-03-24/tbi_military.csv')
+
 #~~~~~~~~~~1/
 # data
 df_mil <-
