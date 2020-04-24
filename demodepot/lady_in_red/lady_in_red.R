@@ -1,10 +1,13 @@
+# April 24, 2020
+#
 #HW challenge to ggplot the lady_in_red https://petapixel.com/assets/uploads/2017/09/distractedboyfriend-800x534.jpg
-
-# Data = 7 colors total -  skin (1 color - brown), 
-#                           hair (2 colors balack, brown), 
-#                          dress (3 colors red, blue, stealblue)
-#                          everythingelse(1 color white)
+#
+# Data = 7 colors total -   skin (1 color  - 1-brown), 
+#                           hair (3 colors - 3-black , 5-brown), 
+#                          dress (3 colors - 2-red, 4-blue, 6-stealblue)
+#                  everythingelse(1 color  - 1-white)
 # image pixle - h x w = 30 x 43  
+# use Excel to drag the data
 
 # load library
 library(ggplot2)
