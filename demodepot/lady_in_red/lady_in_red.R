@@ -23,6 +23,10 @@ df <- melt(as.matrix(lady_in_red)) %>%
 # plot the data
 ggplot(df, aes(x = x, y = y, fill = value)) + #geom_tile()
         geom_tile(color = "gray78", show.legend = FALSE) + 
+        geom_tile(data = (df %>% filter(value ==1)), aes(x = x, y = y, fill = value), show.legend = FALSE) + 
+        geom_tile(data = (df %>% filter(value ==4)), aes(x = x, y = y, fill = value), color = "black", size = 1, show.legend = FALSE) + 
         scale_y_reverse() +
         scale_fill_manual(values = c('white','#EBB1A6','red','grey10','blue','#6E4331','#A4B9C3')) 
+        
+
         
