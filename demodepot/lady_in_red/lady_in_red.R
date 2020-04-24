@@ -1,0 +1,27 @@
+#HW challenge to ggplot the lady_in_red
+
+# Data = 7 colors total -  skin (1 color - brown), 
+                           hair (1 color balack), 
+                          dress (3 colors); 
+# image pixle - h x w = 30 x 3 ; 
+
+# load library
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(reshape2)
+
+# get the data
+lady_in_red <- read_csv("~/Documents/newProjects/lady_in_red/data/lady_in_red.csv")
+
+# clean the data
+df <- melt(as.matrix(lady_in_red)) %>% 
+                 slice(31:1290) %>% 
+                 select(y = 1, x = 2, value)
+
+# plot the data
+ggplot(df, aes(x = x, y = y, fill = value)) + #geom_tile()
+        geom_tile(color = "gray78", show.legend = FALSE) + 
+        scale_y_reverse() +
+        scale_fill_manual(values = c('white','#EBB1A6','red','grey10','blue','#6E4331','#A4B9C3')) 
+        
