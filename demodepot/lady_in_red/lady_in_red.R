@@ -1,10 +1,10 @@
 #HW challenge to ggplot the lady_in_red
 
 # Data = 7 colors total -  skin (1 color - brown), 
-                           hair (2 colors balack, brown), 
-                          dress (3 colors)
-                          everythingelse(1 color white)
-# image pixle - h x w = 30 x 3 ; 
+#                           hair (2 colors balack, brown), 
+#                          dress (3 colors red, blue, stealblue)
+#                          everythingelse(1 color white)
+# image pixle - h x w = 30 x 43  
 
 # load library
 library(ggplot2)
