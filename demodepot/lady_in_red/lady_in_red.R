@@ -18,7 +18,7 @@ lady_in_red <- read_csv("~/Documents/newProjects/lady_in_red/data/lady_in_red.cs
 # clean the data
 df <- melt(as.matrix(lady_in_red)) %>% 
                  slice(31:1290) %>% 
-                 select(y = 1, x = 2, value)
+                 select(x = 2, y = 1, value)
 
 # plot the data
 ggplot(df, aes(x = x, y = y, fill = value)) + #geom_tile()
