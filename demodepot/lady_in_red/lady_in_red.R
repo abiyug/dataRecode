@@ -1,4 +1,4 @@
-#HW challenge to ggplot the lady_in_red
+#HW challenge to ggplot the lady_in_red https://petapixel.com/assets/uploads/2017/09/distractedboyfriend-800x534.jpg
 
 # Data = 7 colors total -  skin (1 color - brown), 
 #                           hair (2 colors balack, brown), 
