@@ -13,7 +13,7 @@ library(readr)
 library(reshape2)
 
 # get the data
-lady_in_red <- read_csv("~/Documents/newProjects/lady_in_red/data/lady_in_red.csv")
+lady_in_red <- read_csv("~/data/lady_in_red.csv")
 
 # clean the data
 df <- melt(as.matrix(lady_in_red)) %>% 
