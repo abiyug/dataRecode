@@ -5,7 +5,7 @@
 # Data = 7 colors total -   skin (1 color  - 1-brown), 
 #                           hair (3 colors - 3-black , 5-brown), 
 #                          dress (3 colors - 2-red, 4-blue, 6-stealblue)
-#                  everythingelse(1 color  - 1-white)
+#                  everythingelse(1 color  - 0-white)
 # image pixle - h x w = 30 x 43  
 # use Excel to drag the data
 
