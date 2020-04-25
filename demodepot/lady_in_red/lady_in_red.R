@@ -3,7 +3,7 @@
 #HW challenge to ggplot the lady_in_red https://petapixel.com/assets/uploads/2017/09/distractedboyfriend-800x534.jpg
 #
 # Data = 7 colors total -   skin (1 color  - 1-brown), 
-#                           hair (3 colors - 3-black , 5-brown), 
+#                           hair (2 colors - 3-black , 5-brown), 
 #                          dress (3 colors - 2-red, 4-blue, 6-stealblue)
 #                  everythingelse(1 color  - 0-white)
 # image pixle - h x w = 30 x 43  
