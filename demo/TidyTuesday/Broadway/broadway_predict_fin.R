@@ -41,7 +41,7 @@ ggplot(show_yr_gross, aes(year, by_year_gross, group = show)) +
   geom_line(data = (show_yr_gross %>% filter(show == "Hamilton")),aes(year, by_year_gross, group = show), col = "red") +
   labs(title = "Hamilton Grossed The Most out of the Gate!")
 
-# top 10 by revenew by year - with at least 5 year run distict()
+# top 10 by reveneu by year - with at least 5 year run distict()
 top_10 <-
   show_yr_gross %>%
   group_by(show) %>%
@@ -81,8 +81,8 @@ grosses_regression_2 <-
                 pct_capacity, seats_in_theatre, 
                 weekly_gross)) %>% #pluck("data") %>% pluck(1)
   mutate(fit = map(data, ~lm(avg_ticket_price ~ year + pct_capacity, data = .x)),
-         tidied = map(fit, broom::tidy),
-         glanced = map(fit, glance),
+         tidied    = map(fit, broom::tidy),
+         glanced   = map(fit, glance),
          augmented = map(fit, augment)) 
 
 # Extract values that will be used for data Viz
