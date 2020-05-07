@@ -24,10 +24,10 @@ library(png)
 user_reviews <- readr::read_tsv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-05/user_reviews.tsv')
 
 # comparison cloud image read back
-img <- readPNG("/Users/abiyugiday/Documents/newProjects/tidytuesday/animal_crossing/fig/comparison_cloud_1.png")
+img <- readPNG("fig/comparison_cloud_1.png")
 
 # cleaned tokenized words from user review
-df_unigram <- read.csv("~/Documents/newProjects/tidytuesday/animal_crossing/data/df_unigram.csv")
+df_unigram <- read.csv("~/data/df_unigram.csv")
 
 # 
 
