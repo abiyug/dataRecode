@@ -1,5 +1,5 @@
 # May 13, 2020
-# Volcanic activity over the last 320 years
+# Volcanic activity over the last 2020 years
 
 # A volcano is a rupture in the crust of a planetary-mass object, such as Earth, that allows hot lava, 
 # volcanic ash, and gases to escape from a magma chamber below the surface.
