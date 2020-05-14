@@ -20,6 +20,7 @@
 #
 # load the library
 library(tidyverse)
+library(santoku)
 library(ggthemes)
 library(colorspace)
 library(lubridate)
