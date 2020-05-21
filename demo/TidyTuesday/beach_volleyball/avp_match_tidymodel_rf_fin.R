@@ -99,8 +99,8 @@ train_test_split <-
 
 # 2/ Prep the recipe to be used 
 volbl_recipe <- 
-  training(train_test_split) %>% #skim()
-  drop_na() %>%                # skim()
+  training(train_test_split) %>%
+  drop_na() %>%                
   recipe(win_loss ~.) %>%
   step_corr(all_predictors()) %>%
   step_center(all_predictors(), -all_outcomes()) %>%
@@ -122,13 +122,11 @@ glimpse(volbl_training)
 
 # 5/ Model Training
 # In the example below, the rand_forest() function is used to initialize a 
-# Random Forest model. To define the number of trees, the trees argument 
-# is used. To use the ranger version of Random Forest, the set_engine() 
-# function is used.
+# Random Forest model. 
 
 volbl_rforest <-
   rand_forest(trees = 250, mode = "classification") %>%
-  set_engine("randomForest") %>%  # ranger returns ->Error: Missing data in columns
+  set_engine("randomForest") %>%  
   fit(win_loss ~ ., data = volbl_training)
 
 volbl_rforest
