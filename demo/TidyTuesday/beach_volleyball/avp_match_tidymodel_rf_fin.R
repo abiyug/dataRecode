@@ -59,9 +59,6 @@ theme_abiyu <- function () {
 
 #~~~~~~~~~~~~~~~~~~~~~
 
-plot.caption  = element_text(size =  12, colour = "gray48"),
-plot.caption  = element_text(size =  12, colour = "gray48"),
-
 # Get the data
 vb_matches <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-19/vb_matches.csv', guess_max = 76000)
 
@@ -132,12 +129,7 @@ glimpse(volbl_training)
 volbl_rforest <-
   rand_forest(trees = 250, mode = "classification") %>%
   set_engine("randomForest") %>%  # ranger returns ->Error: Missing data in columns
-  fit(win_loss ~ ., data = volbl_training)volbl_rforest <-
-  rand_forest(trees = 250, mode = "classification") %>%
-  set_engine("randomForest") %>%  # ranger returns ->Error: Missing data in columns
-  plot.caption  = element_text(size =  12, colour = "gray48"),
-plot.caption  = element_text(size =  12, colour = "gray48"),
-
+  fit(win_loss ~ ., data = volbl_training)
 
 volbl_rforest
 
