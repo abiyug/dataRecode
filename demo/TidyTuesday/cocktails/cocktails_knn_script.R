@@ -75,7 +75,6 @@ df_center <- as_tibble(k_means$centers)
 gg_clust <-
   ggplot(df_three_clustered, aes(vodka, orange_juice, color = cluster , shape = category)) + #, shape = category
   geom_jitter() +
-  #geom_mark_ellipse(aes(fill = category, label = category, description = category))
   geom_mark_ellipse(aes(fill = category, 
                         label = category, 
                         filter = category == c('Cocktail',  'Ordinary Drink', 'Shot'))) +
@@ -92,8 +91,7 @@ gg_clust <-
 
 # theme/customize
 gg_clust <-
-  gg_clust + theme_gdocs()
-  #theme_hc(bgcolor = "darkunica")  +
+  gg_clust + theme_gdocs() +
   theme(#legend.direction = "horizontal",
         #legend.position = c(.3,.4),
         plot.title    = element_text(size = 22, colour = "gray48", family = "Batang"),
