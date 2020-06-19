@@ -1,7 +1,7 @@
 # June 18, 2020
 
 # This graphic is generated for the week 25 tidytuesday data challenge.
-#https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md
+# https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md
 
 # The data from slavevoyages.org shows that  most number of slaves were traded from the port of Lunada Angola.
 # The grpahics include table for the top 10 destination from Angola, the slave trade trend from 1588-1848 and
@@ -151,8 +151,6 @@ df_world <- map_data("world") %>% filter(region != "Antarctica")
 # Add the map and segments from Lunanda
 gg <-
 ggplot() + 
-        #worldmap + 
-        #geom_path(data = df_world, aes(long, lat, group = group), col = "white", size = 1) +#col = "bisque4"
         geom_polygon(data =df_world, aes(long, lat, group = group) , linetype = "solid", color = "gray56", fill = "cornsilk3") +
         # add curves
         geom_curve(data = df_lunada_top_10 %>% filter(!port_arrival %in% c("Rio de Janeiro","Ilha Grande", "Buenos Aires")), aes(x = lon1, y = lat1, xend = lon, yend = lat, group = 1), col = "green2",
@@ -214,17 +212,23 @@ gg_map <- gg_map + theme(plot.background = element_rect(fill = "dodgerblue4"),
 
 
 # patch the plots together
+
+# theme for tableGrob
 theme_2 <- gridExtra::ttheme_minimal(base_size = 9, base_colour = "gray65")
+
+# plot Grob
 gg_trend1 <- ggplotGrob(gg_trend)
 
+# Pputting all of it together/position
 gg_map2 <-
-gg_map +  #theme_minimal() +
+        gg_map +  
         annotation_custom(tableGrob(df_decade_table_luanda,theme = theme_2, rows=NULL ), 
                           xmin = -200,  xmax = -100,
                           ymin = -70,  ymax = -10) +
         annotation_custom(grob = gg_trend1, xmin = -200,  xmax = -120,
                                             ymin = 0,  ymax = 40) 
 
+# Add teh N/compass
 gg_map2 <- gg_map2 + ggspatial::annotation_north_arrow(which_north = "grid", 
                                              location = "br",
                                              style = north_arrow_fancy_orienteering )
