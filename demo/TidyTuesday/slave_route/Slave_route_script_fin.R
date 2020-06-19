@@ -219,7 +219,7 @@ theme_2 <- gridExtra::ttheme_minimal(base_size = 9, base_colour = "gray65")
 # plot Grob
 gg_trend1 <- ggplotGrob(gg_trend)
 
-# Pputting all of it together/position
+# Putting all of it together/position
 gg_map2 <-
         gg_map +  
         annotation_custom(tableGrob(df_decade_table_luanda,theme = theme_2, rows=NULL ), 
