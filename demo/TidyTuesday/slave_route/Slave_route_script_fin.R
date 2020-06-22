@@ -62,7 +62,7 @@ slave_routes %>%
 # Add geo locaton for the top 10 for mapping {require geocode key from google}
 
 # To request geocode from google api register/obtain key
-#ggmap::register_google(key = "xxxx")
+ggmap::register_google(key = "xxxxxx")
 
 df_lunada_top_10 <-
 df_luanda %>%
@@ -75,12 +75,14 @@ df_luanda %>%
         # Specify the county for Campos & Bhahi because there are other cities in diffren location with the same name
         mutate(port_arrival = recode(port_arrival,
                                      "Campos" = "Campos, Brazil",
+                                     "Para"   = "Para, Brazil",
                                      "Bahia" = "Bahia, Brazi")) %>%
         mutate_geocode(port_arrival) %>%
         mutate_geocode(place_of_purchase) %>%
         #remove the country location after getting the geo location
         mutate(port_arrival = recode(port_arrival,
                              "Campos, Brazil" = "Campos",
+                             "Para, Brazil" = "Para",
                              "Bahia, Brazil" = "Bahia"))
 
 #write.csv(df_lunada_top_10, file = "slave_route/data/top_10_arrival.csv", row.names = FALSE)
@@ -93,17 +95,12 @@ df_luanda %>%
 df_top10_by_decade <-
 df_luanda %>% 
         group_by(decade) %>%
-        summarise(tot = sum(n_slaves_arrived, na.rm = TRUE)) %>%
+        summarise(tot = round(sum(n_slaves_arrived, na.rm = TRUE),0)) %>%
         ungroup %>%
         arrange(desc(tot)) %>%
-        mutate_all(~str_replace_all(., "\\[", "")) %>%
-        mutate_all(~str_replace_all(., "\\]", "")) %>%
-        mutate_all(~str_replace_all(., "\\)", "")) %>%
-        mutate_all(~str_replace_all(., ", ", "-")) %>%
+        mutate(decade = str_replace_all(decade, c("\\[" = "", "\\]" = "","\\)" ="", "\\, " = "-"))) %>%
         mutate_each(list(as.numeric), tot ) 
 
-
-        
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -112,13 +109,10 @@ df_decade_table_luanda <-
 df_luanda %>%
         semi_join(df_lunada_top_10, by = c("port_arrival", "place_of_purchase")) %>%
         group_by(port_arrival,decade) %>%
-        summarise(tot = sum(n_slave, na.rm = TRUE)) %>%
+        summarise(tot = round(sum(n_slave, na.rm = TRUE),0)) %>%
         ungroup %>%
         arrange(desc(tot)) %>%
-        mutate_all(~str_replace_all(., "\\[", "")) %>%
-        mutate_all(~str_replace_all(., "\\]", "")) %>%
-        mutate_all(~str_replace_all(., "\\)", "")) %>%
-        mutate_all(~str_replace_all(., ", ", "-")) %>%
+        mutate(decade = str_replace_all(decade, c("\\[" = "", "\\]" = "","\\)" ="", "\\, " = "-"))) %>%
         mutate_each(list(as.numeric), tot ) %>%
         pivot_wider(names_from = port_arrival, values_from = tot, values_fill = list(tot = 0)) %>%
         janitor::clean_names()
@@ -132,10 +126,10 @@ ggplot(df_top10_by_decade, aes(x = decade, y = tot)) +
         geom_point() +
         annotate(geom = "rect", xmin = 10, xmax = 13, ymin=-Inf, ymax=+Inf, fill = "green2", alpha = 0.2) +
         geom_line(aes(group = 1), col = "green2", size = 1) +
-        theme(  plot.title    = element_text(size = 14, colour = "gray48", face = "bold"),
-                axis.text.x = element_text(angle = 90, size= 10,  vjust = 0.5, colour = "gray48", face = "bold"),
-                axis.text.y = element_text(size= 10, vjust = 0.5, colour = "gray48", face = "bold"),
-                axis.title.y  = element_text(size = 10, colour = "gray48", face = "bold"),
+        theme(  plot.title    = element_text(size = 14, colour = "white", face = "bold"),
+                axis.text.x = element_text(angle = 90, size= 10,  vjust = 0.5, colour = "white", face = "bold"),
+                axis.text.y = element_text(size= 10, vjust = 0.5, colour = "white", face = "bold"),
+                axis.title.y  = element_text(size = 10, colour = "white", face = "bold"),
                 panel.grid.major = element_blank(), 
                 panel.grid.minor = element_blank(),
                 panel.background = element_rect(fill = "transparent",colour = NA),
@@ -149,8 +143,12 @@ df_world <- map_data("world") %>% filter(region != "Antarctica")
 
 
 # Add the map and segments from Lunanda
+arw_opt <- arrow(length = unit(0.0115, "npc"), type = "closed")
+
 gg <-
 ggplot() + 
+        #worldmap + 
+        #geom_path(data = df_world, aes(long, lat, group = group), col = "white", size = 1) +#col = "bisque4"
         geom_polygon(data =df_world, aes(long, lat, group = group) , linetype = "solid", color = "gray56", fill = "cornsilk3") +
         # add curves
         geom_curve(data = df_lunada_top_10 %>% filter(!port_arrival %in% c("Rio de Janeiro","Ilha Grande", "Buenos Aires")), aes(x = lon1, y = lat1, xend = lon, yend = lat, group = 1), col = "green2",
@@ -163,12 +161,12 @@ ggplot() +
         geom_point(data = df_lunada_top_10, aes(x = lon1, y = lat1, group = 1), col = "red",  alpha = .5, size = 2) + 
         geom_point(data = df_lunada_top_10, aes(x = lon, y = lat, group = 1), col = "gray20", alpha = .5, size = 2) + #,  size = df_from_Luanda$tot/1000
         xlim(-200, 60) + ylim(-60, 75) +
-        labs(title = "1588-1848 Slave Trade Route From Luanda, Angola to the Americas was the Busiest ", 
+        labs(subtitle = "1588-1848 Slave Trade Route From Luanda, Angola to the Americas was the Busiest ", 
              caption = "Source: slavevoyages.org | Graphic: @abiyugiday",
              x = "", y = "") +
         theme( 
-                plot.title    = element_text(size = 24, colour = "gray48",  hjust = 0.5),
-                plot.caption  = element_text(size =  12, colour = "gray48", hjust = 0.5))
+                plot.subtitle = element_text(size = 24, colour = "white",  hjust = 0.5),
+                plot.caption  = element_text(size =  12, colour = "white", hjust = 0.5))
 
 # Add text
 gg_map <-
@@ -212,23 +210,17 @@ gg_map <- gg_map + theme(plot.background = element_rect(fill = "dodgerblue4"),
 
 
 # patch the plots together
-
-# theme for tableGrob
-theme_2 <- gridExtra::ttheme_minimal(base_size = 9, base_colour = "gray65")
-
-# plot Grob
+theme_2 <- gridExtra::ttheme_minimal(base_size = 9, base_colour = "white")
 gg_trend1 <- ggplotGrob(gg_trend)
 
-# Putting all of it together/position
 gg_map2 <-
-        gg_map +  
-        annotation_custom(tableGrob(df_decade_table_luanda,theme = theme_2, rows=NULL ), 
+gg_map +  #theme_minimal() +
+        annotation_custom(tableGrob(df_decade_table_luanda,theme = theme_2, rows=NULL), 
                           xmin = -200,  xmax = -100,
                           ymin = -70,  ymax = -10) +
         annotation_custom(grob = gg_trend1, xmin = -200,  xmax = -120,
                                             ymin = 0,  ymax = 40) 
 
-# Add teh N/compass
 gg_map2 <- gg_map2 + ggspatial::annotation_north_arrow(which_north = "grid", 
                                              location = "br",
                                              style = north_arrow_fancy_orienteering )
@@ -238,13 +230,5 @@ gg_map2 <- gg_map2 + ggspatial::annotation_north_arrow(which_north = "grid",
 
 
 
-
-
-
-
-
-
-
-
-
 #~~~~~~~~~~~~~~~~~~~end
+
