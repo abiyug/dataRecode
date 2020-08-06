@@ -76,12 +76,9 @@ df_2$cntry_name <- df_2$cntry_name %>% fct_rev()
 gg_heat <-
   ggplot(df_2,  aes(x = name ,y = cntry_name, fill = value)) +
   geom_tile(color = "white", size = .6, show.legend = FALSE) + 
-  ##scale_fill_gradient(low = "white",high = "red") +
   scale_fill_continuous_sequential(palette = "Peach") +
   scale_x_discrete(position = "top") +
   geom_text(aes(label = round(value, 2)), colour = "gray30",size = 3.5,fontface = "bold") +
-  #theme_gray() #+
-  #theme(axis.text.x = element_text(angle = 30, vjust = -1))
   theme_fivethirtyeight() +
   labs(title = "Europe Conventional, Renewable and Nuclear Power Landscape (2016-2018)",
        subtitle = "I: Power Source Use Normalized comparison Heat Map", caption = "Source: Eurostat | graphics: @abiyugiday | https://datarecode.com/") +
@@ -113,15 +110,12 @@ ggplot(df_1, aes(x = energy_absorbed_by_pumping, y = exports)) +
          legend.direction = "horizontal", 
           legend.position = "bottom",
                legend.box = "horizontal")
-    # theme(panel.background = element_rect(fill = "white"))
 
 # Distribution by type
 gg_density <-
 ggplot(df_2, aes(x = value)) + 
-     ##geom_density(aes(col = name), size = 1, show.legend = FALSE) + 
      geom_density(col = "gray40", size = 1, show.legend = FALSE) + 
      facet_wrap(~name, scales = "free") +
-     #theme_gray()
      labs(subtitle = "III: Power Source Distribution by Type") +
      theme_fivethirtyeight() +
      theme(plot.subtitle  = element_text(size = 14, colour = "darkcyan"),
