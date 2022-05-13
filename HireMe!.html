@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
 
-<title>HireMe!.utf8.md</title>
+<title>HireMe!.utf8</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,8 +22,19 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -235,6 +245,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -248,14 +259,7 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TK69SF8G8N"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-TK69SF8G8N');
-</script>
+
 
 
 
@@ -277,7 +281,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">dataRecode.com</a>
+      <a class="navbar-brand" href="index.html">dataRecode</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -493,11 +497,12 @@ if (window.hljs) {
 
 
 <div class="blue">
+<!--
 <p style="font-size:12px; text-align: center;">
 <strong>Address: Lorton, Virginia 22079 email: <a href="mailto:abiyu.giday@datarecode.com%C2%A0" class="email">abiyu.giday@datarecode.com </a>; Tel: 703 459 0943</strong>
-</p>
+</p> -->
 <p style="font-size:12px; text-align: center;">
-Copyright © 2019 dataRecode, LLC. All rights reserved.
+Copyright © 2016 dataRecode, LLC. All rights reserved.
 </p>
 <p style="text-align: center;">
 <a href="https://twitter.com/abiyugiday" class="fa fa-twitter"></a> <a href="https://www.linkedin.com/in/abiyugiday/" class="fa fa-linkedin"></a>
@@ -530,7 +535,7 @@ Copyright © 2019 dataRecode, LLC. All rights reserved.
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
