@@ -407,266 +407,53 @@ div.tocify {
 
 <!-- Gallery -->
 <style>
-
-.thumbnail {
-           width: 230px;
-            height: 220px;
-            padding-bottom: 10px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-           }
-           
-/* resize images */
-.thumbnail img {
-                width: 90%;
-                height: 80%;
-               }
+     h2 {color: #645452; <!-- #536878; #967117;} -->
+     ext-align: left;
+     }
 </style>
 <div id="visulization-gallery" class="section level1">
 <h1>Visulization Gallery</h1>
-The gallery contains samples of visualization generated for diffrent tyeps of data analysis. All the plots are generated with <strong>grammer of graphic plot v2 (ggplot2)</strong> All plots here are static, but because ggplot2’s frame work is extended by over a hundred librarries, the plot can add all kinds of featues including animation, interactivity, tooltips and more.<br />
-The gallerys include:<br />
-+ <a href="#exploratory-plots">Exploratory plots</a><br />
-+ <a href="#maps">Maps</a><br />
-+ <a href="#small-multiple">Small Multiple plots</a><br />
-+ <a href="#model-fit">Model fit</a><br />
-+ <a href="#image-and-fonts">Images and Fonts</a><br />
-+ <a href="#dashboard-and-animation">Dashboard and Animation</a><br />
-<strong>Click on the plot to Expand &gt;&gt;&gt; </strong>
-<blockquote class="blockquote">
-<p class="mb-0">
-“This is my favorite part about analytics: Taking boring flat<br>data and bringing it to life through visualization.”
-</p>
-<footer class="blockquote-footer">
-J. Tukey
-</footer>
-</blockquote>
+<p>The gallery contains samples of visualization generated for different types of data analysis. You will need to click the blue button to see all the slides. Here are the list for each section with a link to take you directly to selected data driven graphics: <a href="#eda">Exploratory Data Analysis</a>, <a href="#maps">geographic maps</a>, <a href="#dash">dashboards</a>, statistic <a href="#model">statstical models</a>, <a href="#sport">sports stat summary</a>, <a href="#covid19">COVID19 related</a>, <a href="#tables">tables</a> and <a href="#art">data generated from art</a>.</p>
+<div id="eda" class="section level2">
+<h2>Exploratory Data Analysis graphics</h2>
+<iframe src="sld_eda_1.html#1" height="600px" width="800px" allowfullscreen>
+</iframe>
 </div>
-<div id="exploratory-plots" class="section level1">
-<h1>Exploratory plots</h1>
-<div class="jumbotron">
-<div class="row">
-<div class="col-sm-4">
-<a class="thumbnail" title="barplot" href="fig/gallery1/t1_barplot.png">
-<img src="fig/gallery1/t1_barplot.png"/>
-<div class="caption">barplot</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="density_curve" href="fig/gallery1/t1_density_curve.png">
-<img src="fig/gallery1/t1_density_curve.png"/>
-<div class="caption">density_curve</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="dotplot" href="fig/gallery1/t1_dotplot.png">
-<img src="fig/gallery1/t1_dotplot.png"/>
-<div class="caption">dotplot</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="five_num_stat_table" href="fig/gallery1/t1_five_num_stat_table.png">
-<img src="fig/gallery1/t1_five_num_stat_table.png"/>
-<div class="caption">five_num_stat_table</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="line" href="fig/gallery1/t1_line.png">
-<img src="fig/gallery1/t1_line.png"/>
-<div class="caption">line</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="line_max_min" href="fig/gallery1/t1_all.png">
-<img src="fig/gallery1/t1_all.png"/>
-<div class="caption">line_max_min</div>
-</a>
+<div id="maps" class="section level2">
+<h2>Maps</h2>
+<iframe src="sld_map_1.html#1" height="600px" width="800px" allowfullscreen>
+</iframe>
 </div>
+<div id="dash" class="section level2">
+<h2>Dashboards</h2>
+<iframe src="sld_dashbrd_1.html#1" height="600px" width="800px" allowfullscreen>
+</iframe>
 </div>
+<div id="model" class="section level2">
+<h2>Models</h2>
+<iframe src="sld_modl_1.html#1" height="600px" width="800px" allowfullscreen>
+</iframe>
 </div>
+<div id="sport" class="section level2">
+<h2>Sports Stats</h2>
+<iframe src="sld_sport_stat_1.html#1" height="600px" width="800px" allowfullscreen>
+</iframe>
 </div>
-<div id="maps" class="section level1">
-<h1>Maps</h1>
-<div class="jumbotron">
-<div class="row">
-<div class="col-sm-4">
-<a class="thumbnail" title="appalachian" href="fig/gallery1/t2_appalachian.png">
-<img src="fig/gallery1/t2_appalachian.png"/>
-<div class="caption">appalachian</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="cdmap" href="fig/gallery1/t2_cdmap.png">
-<img src="fig/gallery1/t2_cdmap.png"/>
-<div class="caption">cdmap</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="country" href="fig/gallery1/t2_country.png">
-<img src="fig/gallery1/t2_country.png"/>
-<div class="caption">country</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="global2" href="fig/gallery1/t2_global2.png">
-<img src="fig/gallery1/t2_global2.png"/>
-<div class="caption">global2</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="region" href="fig/gallery1/t2_region.png">
-<img src="fig/gallery1/t2_region.png"/>
-<div class="caption">region</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="world" href="fig/gallery1/t2_world.png">
-<img src="fig/gallery1/t2_world.png"/>
-<div class="caption">world</div>
-</a>
+<div id="covid19" class="section level2">
+<h2>COVID19 graphics</h2>
+<iframe src="sld_covid_1.html#1" height="600px" width="800px" allowfullscreen>
+</iframe>
 </div>
+<div id="tables" class="section level2">
+<h2>Tables</h2>
+<iframe src="sld_table_1.html#1" height="600px" width="800px" allowfullscreen>
+</iframe>
 </div>
-</div>
-</div>
-<div id="small-multiple" class="section level1">
-<h1>Small Multiple</h1>
-<div class="jumbotron">
-<div class="row">
-<div class="col-sm-4">
-<a class="thumbnail" title="facet1" href="fig/gallery1/t3_facet1.jpeg">
-<img src="fig/gallery1/t3_facet1.jpeg"/>
-<div class="caption">facet1</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="facet2" href="fig/gallery1/t3_facet2.png">
-<img src="fig/gallery1/t3_facet2.png"/>
-<div class="caption">facet2</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="facet3" href="fig/gallery1/t3_facet3.png">
-<img src="fig/gallery1/t3_facet3.png"/>
-<div class="caption">facet3</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="facet4" href="fig/gallery1/t3_facet4.png">
-<img src="fig/gallery1/t3_facet4.png"/>
-<div class="caption">facet4</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="facet5" href="fig/gallery1/t3_facet5.png">
-<img src="fig/gallery1/t3_facet5.png"/>
-<div class="caption">facet5</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="facet" href="fig/gallery1/t3_facet.png">
-<img src="fig/gallery1/t3_facet.png"/>
-<div class="caption">facet</div>
-</a>
-</div>
-</div>
-</div>
-</div>
-<div id="model-fit" class="section level1">
-<h1>Model Fit</h1>
-<div class="jumbotron">
-<div class="row">
-<div class="col-sm-4">
-<a class="thumbnail" title="model1" href="fig/gallery1/t4_model1.png">
-<img src="fig/gallery1/t4_model1.png"/>
-<div class="caption">model1</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="model2" href="fig/gallery1/t4_model2.png">
-<img src="fig/gallery1/t4_model2.png"/>
-<div class="caption">model2</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="model3" href="fig/gallery1/t4_model3.svg">
-<img src="fig/gallery1/t4_model3.svg"/>
-<div class="caption">model3</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="model4" href="fig/gallery1/t4_model4.png">
-<img src="fig/gallery1/t4_model4.png"/>
-<div class="caption">model4</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="model5" href="fig/gallery1/t4_model5.png">
-<img src="fig/gallery1/t4_model5.png"/>
-<div class="caption">model5</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="model6" href="fig/gallery1/t4_model6.png">
-<img src="fig/gallery1/t4_model6.png"/>
-<div class="caption">model6</div>
-</a>
-</div>
-</div>
-</div>
-</div>
-<div id="image-and-fonts" class="section level1">
-<h1>Image and Fonts</h1>
-<div class="jumbotron">
-<div class="row">
-<div class="col-sm-4">
-<a class="thumbnail" title="bkgrndguide" href="fig/gallery1/t5_bkgrndguide.png">
-<img src="fig/gallery1/t5_bkgrndguide.png"/>
-<div class="caption">bkgrndguide</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="county" href="fig/gallery1/t5_county.png">
-<img src="fig/gallery1/t5_county.png"/>
-<div class="caption">county</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="fonts" href="fig/gallery1/t5_fonts.png">
-<img src="fig/gallery1/t5_fonts.png"/>
-<div class="caption">fonts</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="imgBar" href="fig/gallery1/t5_imgBar.png">
-<img src="fig/gallery1/t5_imgBar.png"/>
-<div class="caption">imgBar</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="img" href="fig/gallery1/t5_img.png">
-<img src="fig/gallery1/t5_img.png"/>
-<div class="caption">img</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="mix" href="fig/gallery1/t5_mix.png">
-<img src="fig/gallery1/t5_mix.png"/>
-<div class="caption">mix</div>
-</a>
-</div>
-</div>
-</div>
-</div>
-<div id="dashboard-and-animation" class="section level1">
-<h1>Dashboard and Animation</h1>
-<div class="jumbotron">
-<div class="row">
-<div class="col-sm-4">
-<a class="thumbnail" title="dash2" href="fig/gallery1/t6_dash2.png">
-<img src="fig/gallery1/t6_dash2.png"/>
-<div class="caption">dash2</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="dashdot" href="fig/gallery1/t6_dashdot.png">
-<img src="fig/gallery1/t6_dashdot.png"/>
-<div class="caption">dashdot</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="dash" href="fig/gallery1/t6_dash.png">
-<img src="fig/gallery1/t6_dash.png"/>
-<div class="caption">dash</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="gganimate" href="fig/gallery1/t6_gganimate.gif">
-<img src="fig/gallery1/t6_gganimate.gif"/>
-<div class="caption">gganimate</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="leaflet" href="fig/gallery1/t6_leaflet.png">
-<img src="fig/gallery1/t6_leaflet.png"/>
-<div class="caption">leaflet</div>
-</a>
-</div><div class="col-sm-4">
-<a class="thumbnail" title="plotly" href="fig/gallery1/t6_plotly.png">
-<img src="fig/gallery1/t6_plotly.png"/>
-<div class="caption">plotly</div>
-</a>
-</div>
-</div>
+<div id="art" class="section level2">
+<h2>Data Generated Art</h2>
+<iframe src="sld_art_1.html#1" height="600px" width="800px" allowfullscreen>
+</iframe>
+<hr />
 </div>
 </div>
 
