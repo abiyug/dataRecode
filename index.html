@@ -11,19 +11,26 @@
 
 
 
-<title>index.utf8</title>
+<title></title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -37,11 +44,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -54,32 +56,8 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
@@ -90,10 +68,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -110,40 +84,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -171,7 +121,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -183,7 +133,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -193,11 +143,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -209,7 +176,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -276,7 +242,7 @@ $(document).ready(function () {
 <div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -303,6 +269,13 @@ $(document).ready(function () {
   </a>
 </li>
 <li>
+  <a href="case_studies.html">
+    <span class="fa fa-crosshairs"></span>
+     
+    Case Studies
+  </a>
+</li>
+<li>
   <a href="gallery.html">
     <span class="fa fa-map-marked-alt"></span>
      
@@ -321,7 +294,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -360,28 +333,27 @@ div.col-md-4 {
 .list {
     text-align: left;
     justify-content: space-between;
-
+    }
 </style>
 <div id="section" class="section level1">
 <h1></h1>
 <div class="jumbotron jumbotron-fluid"" >
-  <div class="container">
-  <div class = "row">
-   <div class = "col-md-4">
-   <br><br>
-<img src="fig/mod_1.png" width="120%" style="display: block; margin: auto;" />
-<!-- <p style="text-align: center; "><strong>Abiyu Giday</strong><p> -->
-<!-- <p style="text-align: center; font-size: 95%%">Data Science<br>Consultant and Trainer<p> -->
-<br><br>
-<!--  <p style="text-align: center; font-size: 80%"><strong> email: abiyu.giday@datarecode.com<br/>Tel: 703 459 0943 </strong> <p> -->
-<p style="text-align: center; color:#1874CD; font-size: 85%"><strong> contact: info@datarecode.com</strong> <p> 
-  </div>
-  <div class = "col-md-8">
-<img src="fig/slider/test_10.gif" width="100%" height="100%" style="display: block; margin: auto 0 auto auto;" />
-  </div>
- </div>
+<div class="container">
+<div class = "row">
+<div class = "col-md-4">
+<br><br> <img src="fig/mod_1.png" width="120%" style="display: block; margin: auto;" /> <!-- <p style="text-align: center; "><strong>Abiyu Giday</strong><p> --> <!-- <p style="text-align: center; font-size: 95%%">Data Science<br>Consultant and Trainer<p> --> <br><br> <!--  <p style="text-align: center; font-size: 80%"><strong> email: abiyu.giday@datarecode.com<br/>Tel: 703 459 0943 </strong> <p> -->
+<p style="text-align: center; color:#1874CD; font-size: 85%">
+<strong> contact: <a href="mailto:info@datarecode.com">info@datarecode.com</a></strong>
+<p>
 </div>
-   <button type="button"  class="btn btn-info" onclick="window.open('HireMe!.html')" style="float: right;font-size: 16px; border: 2px solid gray; background-color: #f44336;">Request a Demo</button>
+<div class="col-md-8">
+<img src="fig/slider/test_10.gif" width="100%" height="100%" style="display: block; margin: auto 0 auto auto;" />
+</div>
+</div>
+</div>
+<button type="button" class="btn btn-info" onclick="window.open('HireMe!.html')" style="float: right;font-size: 16px; border: 2px solid gray; background-color: #f44336;">
+Request a Demo
+</button>
 </div>
 <hr />
 <p style="color:#36454f;text-align:justify;word-break:keep-all;font-size: 18px;font-style: italic;">
@@ -398,19 +370,20 @@ Getting answers from a data starts with asking <strong>the right question</stron
 </p>
 <ul class="list">
 <li>
-This is question we want answered, here is our the data.<br />
-
+This is question we want answered, here is our the data.
+</li>
 <li>
 We have the data and know the problem we would like to address, but not sure the question to ask.
+</li>
 <li>
-We want to answer <strong>this</strong> question, but we don’t have the data.<br />
-
+We want to answer <strong>this</strong> question, but we don’t have the data.
+</li>
 <li>
-<strong>This</strong> is my objective, not sure what question to ask, and not sure where to get the data?<br />
-
+<strong>This</strong> is my objective, not sure what question to ask, and not sure where to get the data?
+</li>
 <li>
-We want to build GIS maps<br />
-
+We want to build GIS maps
+</li>
 </ul>
 </div>
 <div class="col-md-4">
@@ -460,7 +433,7 @@ Train and test a machine learning algorithms
 <p style="text-align:left;word-break:keep-all;">
 The result of the data analysis can be delivered as reproducible document, graphic plot, dashboard or an algorithm that you can embed in your system. Depending on the project, these are some of the deliverables we share the results:
 </p>
-<ul class="list" >
+<ul class="list">
 <li>
 Reproducible report including the findings and recommendations<br />
 
@@ -663,7 +636,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
