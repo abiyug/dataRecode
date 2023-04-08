@@ -114,7 +114,7 @@ acumlt_season_points <- function(df, x) {
         return(df_9)
 }
 
-# 2.c/  use the function to build tpoints, wins, loss and
+# 2.c/  use the function to build tpoints, wins, loss and draws
 team_name <-
 unique(df_1$HomeTeam)
                            
