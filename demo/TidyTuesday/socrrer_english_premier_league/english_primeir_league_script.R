@@ -117,7 +117,9 @@ acumlt_season_points <- function(df, x) {
 }
 
 # 2.c/  use the function to build tpoints, wins, loss and
-
+team_name <-
+unique(df_1$HomeTeam)
+                           
 df_all_team_wkly_point <- 
 map_dfr(team_name, acumlt_season_points)
 
