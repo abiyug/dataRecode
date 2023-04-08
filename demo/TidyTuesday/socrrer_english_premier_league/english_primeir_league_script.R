@@ -190,9 +190,7 @@ ggplot(soccer_2021_2022, aes(x = game_num, y = cumulative_point, group = Team)) 
              y = "Cumulative Points",
              title = "30th Season (2021-2022) English Professional Premier League Results",
              subtitle = str_wrap("In the league there were 20 teams, each team played the other 19 teams twice for the total of 38 games. A win gets a team 3 points, a draw 1 point and loss zero point. For each team, a small multiple plot shows Win, Draw, Loss (W_D_L) record - Goals Scored/Goals Allowed (GS_GA) - total points at the end of the season and the wining percentage for the season.",125),
-             #caption  = "Data Source:  Evan Gower/Kaggle | Graphics: @abiyugiday | Tidytuesday: 2023-04-04"
-             caption  = "Data Source:  Evan Gower/Kaggle | Graphics: @dataRecode"
-
+             caption  = "Data Source:  Evan Gower/Kaggle | Graphics: @abiyugiday | Tidytuesday: 2023-04-04"
         ) +
         scale_color_identity() +
         scale_x_continuous(breaks = seq(0, 38, by = 8)) +
