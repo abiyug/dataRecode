@@ -117,9 +117,6 @@ acumlt_season_points <- function(df, x) {
 }
 
 # 2.c/  a cunction that will accumulate total points, wins, loss and
-select(Team, game_num, logo_link, cumulative_point) %>% 
-        mutate(cumulative_point = 75)
-
 df_w_d_l <-
 df_win_tie_loss %>%
         select(Team, win, draws, loss) %>%
