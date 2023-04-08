@@ -119,7 +119,7 @@ acumlt_season_points <- function(df, x) {
 # 2.c/  use the function to build tpoints, wins, loss and
 
 df_all_team_wkly_point <- 
-        map_dfr(team_name, acumlt_season_points)
+map_dfr(team_name, acumlt_season_points)
 
 # 2.d/  cobmbine result,logo and adjust colors
 
@@ -146,7 +146,7 @@ soccer_2021_2022 %>%
         select(Team, game_num, logo_link, cumulative_point) %>% 
         mutate(cumulative_point = 75)
 
-# 2.e Build a table with win, draw, loss, Goals Scored, Goal Allowed and win percentage for labels 
+# 2.f/ Build a table with win, draw, loss, Goals Scored, Goal Allowed and win percentage for labels 
 df_w_d_l <-
 df_win_tie_loss %>%
         select(Team, win, draws, loss) %>%
