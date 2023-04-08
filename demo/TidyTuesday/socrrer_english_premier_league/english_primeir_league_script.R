@@ -74,7 +74,7 @@ soccer %>%
                 id = paste0(year,"_",wk_no))  %>%
         select(id, everything()) #%>%
 
-# 2.b/  a cunction that will accumulate total points, wins, loss and
+# 2.b/  a fcunction that will accumulate total points, wins, loss and
 acumlt_season_points <- function(df, x) {
         
         # Subset the first six columns of the input data frame
