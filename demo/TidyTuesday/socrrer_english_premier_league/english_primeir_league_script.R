@@ -66,7 +66,7 @@ trophy_img <- "https://w7.pngwing.com/pngs/492/150/png-transparent-silver-barcla
 
 # 2.a/ change the date to POSIXct, get the week, year ang generate a unique id with the two vars
 df_1 <-
-        soccer %>% 
+soccer %>% 
         as_tibble() %>%  
         mutate( Date = as.POSIXct(Date, format = "%d/%m/%Y"), 
                 wk_no = format(Date, '%V'),
@@ -116,21 +116,30 @@ acumlt_season_points <- function(df, x) {
         return(df_9)
 }
 
-# 2.c/  a cunction that will accumulate total points, wins, loss and
-df_w_d_l <-
-df_win_tie_loss %>%
-        select(Team, win, draws, loss) %>%
-        inner_join(soccer_2021_2022) %>%
-        inner_join(df_win_tie_loss %>% select(Team, GoalsScored, GoalsAllowed, tot_points, win_prcnt)) %>% 
-        mutate(Team = fct_inorder(Team, ranks),
-               W_D_L =  paste0(win,"_",draws,"_",loss),
-               GS_GA =  paste0(GoalsScored,"_",GoalsAllowed),
-               win_prcnt = scales::percent(win_prcnt),
-        ) %>%
-        select(Team, W_D_L, GS_GA, win_prcnt, ranks, win_prcnt) %>%
-        distinct()
+# 2.c/  use the function to build tpoints, wins, loss and
 
-# 2.d get the team logo and prepare the x/y coordinates where the logos will reside (top/left)
+df_all_team_wkly_point <- 
+        map_dfr(team_name, acumlt_season_points)
+
+# 2.d/  cobmbine result,logo and adjust colors
+
+soccer_2021_2022 <-
+df_all_team_wkly_point %>%
+        group_by(Team) %>% 
+        summarise(tot_point = max(cumulative_point)) %>%
+        ungroup() %>% 
+        arrange(desc(tot_point)) %>%
+        mutate(ranks = 1:n()) %>%
+        inner_join(df_all_team_wkly_point) %>%
+        inner_join(club_logo_colr, by = "Team") %>%
+        mutate(Team = fct_inorder(Team, ranks),
+               hex_code = recode(hex_code, "#FFFFFF" = "#132257"), # totenham colors
+               hex_code = recode(hex_code, "#FBEE23" = "#11210C"), # watford color 
+               hex_code = recode(hex_code, "#FFCD00" = "#AC944D")  # Leeds
+        )
+
+
+# 2.e/ get the team logo and prepare the x/y coordinates where the logos will reside (top/left)
 team_logo <-
 soccer_2021_2022 %>%
         filter(game_num == 5) %>% 
@@ -151,7 +160,9 @@ df_win_tie_loss %>%
         select(Team, W_D_L, GS_GA, win_prcnt, ranks, win_prcnt) %>%
         distinct()
 
-# 3 geneate the data Viz with ggplot2
+# 3/ geneate the data Viz with ggplot2
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 ggplot(soccer_2021_2022, aes(x = game_num, y = cumulative_point, group = Team)) +
         geom_line(aes(col = hex_code), show.legend = FALSE, size = 1) +
         gghighlight(label_params = list(fontface = "bold", size = 8, alpha = 0.8)) +
@@ -165,19 +176,21 @@ ggplot(soccer_2021_2022, aes(x = game_num, y = cumulative_point, group = Team)) 
                           group_by(Team) %>% 
                           slice_max(cumulative_point, n = 1),
                   aes(x = 5.8, y  = 52, label =  paste0("Points: ", cumulative_point)), 
-                  col = txt_clr, size = txt_sz + 2, fontface = "bold", vjust = hj) +
+                    col = txt_clr, size = txt_sz + 2, fontface = "bold", vjust = hj) +
         geom_text(data = df_w_d_l, aes(x = 5.8, y = 46, label = paste0("W_D_L: ", W_D_L)), 
-                  col = txt_clr, size = txt_sz, fontface = "bold", vjust = hj) +
+                   col = txt_clr, size = txt_sz, fontface = "bold", vjust = hj) +
         geom_text(data = df_w_d_l, aes(x = 5.8, y = 40, label = paste0("GS_GA: ", GS_GA)), 
-                  col = txt_clr, size = txt_sz, fontface = "bold", vjust = hj) +
+                   col = txt_clr, size = txt_sz, fontface = "bold", vjust = hj) +
         geom_text(data = df_w_d_l, aes(x = 5.8, y = 34, label = paste0("Win_%: ", win_prcnt)), 
-                  col = txt_clr, size = txt_sz, fontface = "bold", vjust = hj) +
+                   col = txt_clr, size = txt_sz, fontface = "bold", vjust = hj) +
         facet_wrap(~ Team) +
         labs(x = "Game Numbers (1-38)", 
              y = "Cumulative Points",
              title = "30th Season (2021-2022) English Professional Premier League Results",
              subtitle = str_wrap("In the league there were 20 teams, each team played the other 19 teams twice for the total of 38 games. A win gets a team 3 points, a draw 1 point and loss zero point. For each team, a small multiple plot shows Win, Draw, Loss (W_D_L) record - Goals Scored/Goals Allowed (GS_GA) - total points at the end of the season and the wining percentage for the season.",125),
-             caption  = "Data Source:  Evan Gower/Kaggle | Graphics: @abiyugiday | Tidytuesday: 2023-04-04"
+             #caption  = "Data Source:  Evan Gower/Kaggle | Graphics: @abiyugiday | Tidytuesday: 2023-04-04"
+             caption  = "Data Source:  Evan Gower/Kaggle | Graphics: @dataRecode"
+
         ) +
         scale_color_identity() +
         scale_x_continuous(breaks = seq(0, 38, by = 8)) +
@@ -186,13 +199,13 @@ ggplot(soccer_2021_2022, aes(x = game_num, y = cumulative_point, group = Team)) 
         #theme_void() +
         theme_light(base_family = fam_2) +
         theme(   plot.title = element_text(family = fam_1, size = 52, colour = "#02558b", face = "bold", hjust = 0.5),
-                 plot.subtitle = element_text(family = fam_4, lineheight = 0.35, size = 30, colour = "gray44", face = "bold", hjust = 0.5),
-                 plot.caption = element_text(family = fam_3, size = 20, colour = "#02558b", face = "bold"),
-                 plot.background = element_rect(colour = NA, fill = "#eddbc0"), #eddbc0"),
-                 axis.text = element_text(family = fam_4, size = 16, colour = "gray44", face = "bold"), 
+              plot.subtitle = element_text(family = fam_4, lineheight = 0.35, size = 30, colour = "gray44", face = "bold", hjust = 0.5),
+               plot.caption = element_text(family = fam_3, size = 20, colour = "#02558b", face = "bold"),
+            plot.background = element_rect(colour = NA, fill = "#eddbc0"), #eddbc0"),
+                  axis.text = element_text(family = fam_4, size = 16, colour = "gray44", face = "bold"), 
                  axis.title = element_text(family = fam_4, size = 20, colour = "gray44", face = "bold"), 
-                 strip.background = element_blank(),
+           strip.background = element_blank(),
                  strip.text = element_blank(),
-                 panel.grid.minor = element_blank(),
-                 panel.grid.major = element_line(linetype = "dashed"))
+           panel.grid.minor = element_blank(),
+           panel.grid.major = element_line(linetype = "dashed"))
 
