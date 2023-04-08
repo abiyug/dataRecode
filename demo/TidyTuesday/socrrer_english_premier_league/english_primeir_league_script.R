@@ -77,8 +77,6 @@ soccer %>%
 # 2.b/  a cunction that will accumulate total points, wins, loss and
 acumlt_season_points <- function(df, x) {
         
-        library(stringr)
-        
         # Subset the first six columns of the input data frame
         df_1 <- df[,1:6]
         
