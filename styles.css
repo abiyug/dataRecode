@@ -1,7 +1,10 @@
 /** blockquote {
   font-style: italic
 }
-/*.jumbotron {
+/*
+@import url("https://fonts.googleapis.com/css?color=red&family=Nunito Sans:wght@900|Audiowide|Bruno Ace|Playfair Display|Gemunu Libre|RObot|Outfit&display=swap");
+
+.jumbotron {
   margin-top: 0;
   margin-bottom: 0; 
 }
