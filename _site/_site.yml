@@ -1,0 +1,33 @@
+---
+name: "my-website"
+navbar:
+  title: '<div style="margin-bottom: 0;padding:0px;"><img style="border:0;padding: -10px;" src="logo/logo_white_8x4_fc4a1a_31x31_85k.png" width="12%" height="12%">dataRecode</div>'  
+  type: inverse
+  right:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "Services"
+      icon: fa-cubes
+      href: services.html
+    - text: "Case Studies"
+      icon: fa-crosshairs
+      href: case_studies.html
+    - text: "Gallery"
+      icon: fa-map-marked-alt
+      href: gallery.html
+    - text: "Download"
+      icon: fa-download
+      href: download.html
+    - text: "About US"
+      icon: fa-gear
+      href: about.html
+    
+output:
+  html_document:
+     theme: cosmo
+     highlight: textmate
+     include:
+       after_body: footer.html
+     css: styles.css
+---
