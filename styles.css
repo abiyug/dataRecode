@@ -39,6 +39,8 @@ h2 {
   /**background-color:#f1f5fa;**/
   color: #f0810f; /*fc4a1a;*/
   text-align: left;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 h3 {
