@@ -31,18 +31,21 @@ h1 {
     font-style: normal;
     size = 28; 
     font-stretch: normal;
+    text-align: left;
    }
 
 h2 {
   font-family: "Audiowide", sans-serif;
   /**background-color:#f1f5fa;**/
   color: #f0810f; /*fc4a1a;*/
+  text-align: left;
 }
 
 h3 {
   font-family:"Montserrat";
   color:#8e9b97;
   padding: 5px;
+  text-align: left;
 }
 #header-image {
   border: none;
