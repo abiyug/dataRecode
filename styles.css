@@ -49,6 +49,19 @@ h3 {
   padding: 5px;
   text-align: left;
 }
+
+/* Add for smart phone h1/h2 align */
+.left-align {
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .left-align {
+    text-align: left;
+  }
+}
+/* end smart phone h1/h2 align */
+
 #header-image {
   border: none;
 }
