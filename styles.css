@@ -38,6 +38,7 @@ h3 {
   text-align: left;
 }
 
+/* 
 @media (max-width: 768px) {
   .left-align {
     text-align: left;
@@ -58,29 +59,50 @@ hr {
      color:#9099a2;
      background-color:#b38540
 }
+
+
+
+/*
+body {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Outfit";
+} */
+
+/*  the latest june 28 2023
+
 body {
        font-size:19px;
-       color:#2d4262;
-       font-family: "Outfit";       
-       /*font-family: 'Roboto', sans-serif;*/
-       font-weight:400;
-       line-height: 1.2;
-       hyphens: auto;
-      /*  text-align: justify; 
-          text-align:justify;
-          word-spacing:-1px; */
-       text-align:left;
-      /*text-justify: inter-word;*/
-       word-spacing: 1.5px;
-       letter-spacing: .4px; 
+       color: black;
+       font-family:"Nunito Sans";
+       line-height: 1.3;
+       font-weight: 400;
        font-style: normal;
-       font-stretch:normal;
- }
+       text-align: left;
+} */
+
+/* icon control (from fa) */
+i {
+    float: left;
+    color: #d35c37; /*--fc4a1a;  before change 317eac; */
+    right: 20px;
+    padding: 15px;
+    }  
+
+body {
+       font-size:19px;
+       color: #2d4262;
+       /*font-family: "Outfit";
+       line-height: 1.2; */
+       font-weight: 400;
+       font-style: normal;
+ } 
  
 /* Styling clickable links */
 a {
-  color: #f0810f;
+    color: #d35c37;
 }
+
 /*
 a:link {
   color: #f0810f;
