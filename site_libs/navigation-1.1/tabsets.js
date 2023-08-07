@@ -5,7 +5,7 @@
  *
  * @author Aidan Lister <aidan@php.net>
  * adapted by Ruben Arslan to activate parent tabs too
- * http://www.aidanlister.com/2014/03/persisting-the-tab-state-in-bootstrap/
+ * https://www.aidanlister.com/2014/03/persisting-the-tab-state-in-bootstrap/
  */
 (function($) {
   "use strict";
